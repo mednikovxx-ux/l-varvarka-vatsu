@@ -130,7 +130,7 @@ section{position:relative}
 .who-media{position:absolute;top:0;bottom:0;left:0;width:min(56vw,860px);overflow:hidden;pointer-events:none;
   -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);
   -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
-.who-media video{width:100%;height:100%;object-fit:cover;object-position:62% 45%;transform:scale(1.14);transform-origin:62% 45%;filter:saturate(.85) sepia(.12) brightness(1.04)}
+.who-media video{width:100%;height:100%;object-fit:cover;object-position:71% 45%;transform:scale(1.14);transform-origin:71% 45%;filter:saturate(.85) sepia(.12) brightness(1.04)}
 .who-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.55) 82%,var(--cream) 100%)}
 .rows{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
 .rows li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:28px 30px;background:rgba(243,241,226,.82)}
@@ -239,15 +239,11 @@ footer .note{flex-basis:100%;font-weight:600;color:var(--ink);font-size:16px}
 .srcs{display:flex;gap:10px 26px;flex-wrap:wrap;justify-content:center}
 .srcs a{color:#fff;font-weight:600;text-underline-offset:5px}
 /* фон с водой: 3D-капля и разводы под текстом */
-#drop3d{position:fixed;inset:0;z-index:0;pointer-events:none}
-#drop3d canvas{width:100%!important;height:100%!important;display:block}
-#waterline{z-index:0}
 main,footer.foot{position:relative;z-index:1}
 .hero,.quote,.book{z-index:2}
 .word{font-family:var(--display);letter-spacing:.06em;text-transform:uppercase}
 
 /* ---------- горизонтальная прокрутка (компьютер) ---------- */
-#waterline{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 .h-on .hwrap{position:relative}
 .h-on .track{position:sticky;top:0;height:100vh;display:flex;width:max-content;will-change:transform}
 .h-on main{display:contents}
@@ -511,8 +507,7 @@ main,footer.foot{position:relative;z-index:1}
   <p class="note">Имеются противопоказания. Необходима консультация специалиста.</p>
 </footer>
 </div></div>
-<canvas id="waterline" aria-hidden="true"></canvas>
-<div id="drop3d" aria-hidden="true"></div>
+
 
 <div class="sticky" id="sticky">
   <a class="btn" href="tel:88314110444">Позвонить</a>
@@ -590,68 +585,5 @@ main,footer.foot{position:relative;z-index:1}
 })();
 </script>
 <script src="https://reservi.ru/4.0/812443719/" async></script>
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
-<script type="module">
-/* Капля воды в 3D идёт фоном за текстом и при смене блока падает, оставляя разводы */
-import * as THREE from 'three';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const host=document.getElementById('drop3d'), rc=document.getElementById('waterline'), cx=rc.getContext('2d');
-let W=innerWidth,H=innerHeight,dpr=Math.min(devicePixelRatio||1,1.75);
-let renderer;
-try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});}catch(e){renderer=null;}
-const scene=new THREE.Scene();
-const cam=new THREE.OrthographicCamera(-W/2,W/2,H/2,-H/2,-2000,2000);cam.position.z=1000;
-let mesh,base,geo;
-if(renderer){
-  renderer.setPixelRatio(dpr);renderer.setSize(W,H);renderer.setClearColor(0x000000,0);
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.outputColorSpace=THREE.SRGBColorSpace;
-  host.appendChild(renderer.domElement);
-  const pm=new THREE.PMREMGenerator(renderer);scene.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;
-  const prof=[];for(let k=0;k<=80;k++){const th=Math.PI*k/80;prof.push(new THREE.Vector2(Math.sin(th)*Math.pow(Math.sin(th/2),1.6)*1.05,Math.cos(th)*1.25));}
-  geo=new THREE.LatheGeometry(prof,96);
-  const mat=new THREE.MeshPhysicalMaterial({color:0x5fa8a1,roughness:0.02,metalness:0.05,clearcoat:1,clearcoatRoughness:0.01,
-    transparent:true,opacity:0.55,envMapIntensity:2.8,iridescence:0.45,iridescenceIOR:1.33,specularIntensity:1});
-  mesh=new THREE.Mesh(geo,mat);scene.add(mesh);
-  const key=new THREE.DirectionalLight(0xffffff,2.2);key.position.set(-300,500,600);scene.add(key);
-  scene.add(new THREE.AmbientLight(0xffffff,0.35));
-}
-function size(){W=innerWidth;H=innerHeight;rc.width=W*dpr;rc.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
-  if(renderer){renderer.setSize(W,H);cam.left=-W/2;cam.right=W/2;cam.top=H/2;cam.bottom=-H/2;cam.updateProjectionMatrix();}}
-size();addEventListener('resize',size);
-const sections=[...document.querySelectorAll('main > section, .hero')];
-function idx(){const c=innerHeight*.55;let k=0;sections.forEach((s,i)=>{if(s.getBoundingClientRect().top<c)k=i;});return k;}
-function prog(){const m=document.documentElement.scrollHeight-innerHeight;return m>0?scrollY/m:0;}
-let last=-1,fall=0,ripples=[],t0=performance.now(),idleT=0;
-function shape(t,squash){
-  const pos=geo.attributes.position.array;
-  for(let i=0;i<pos.length;i+=3){
-    let x=base[i],y=base[i+1],z=base[i+2];
-    if(y>0){const k=Math.pow(1-y,1.15)*0.92+0.08*(1-y);x*=k;z*=k;y*=1.75;}else{y*=0.95;}
-    const a=Math.atan2(z,x),w=1+0.035*Math.sin(3*a+t*2.1)+0.025*Math.sin(5*y+t*1.7);
-    x*=w*(1+squash*0.25);z*=w*(1+squash*0.25);y*=(1-squash*0.3);
-    pos[i]=x;pos[i+1]=y;pos[i+2]=z;
-  }
-  geo.attributes.position.needsUpdate=true;geo.computeVertexNormals();
-}
-function frame(){
-  const t=(performance.now()-t0)/1000,p=prog(),i=idx();
-  if(i!==last){if(last>=0){fall=1;}last=i;}
-  const R=Math.max(34,Math.min(W,H)*0.075);
-  const x=Math.sin(p*Math.PI*3.2)*W*0.3, yBase=-H*0.08+Math.sin(t*0.9)*10;
-  const f=fall>0?Math.sin((1-fall)*Math.PI):0;
-  const y=yBase-f*90;
-  if(fall>0){fall-=0.016;if(fall<=0.5&&!ripples.some(r=>r.t>t-0.4)){ripples.push({x:W/2+x,y:H/2-y+R*0.9,t,big:1});}if(fall<0)fall=0;}
-  idleT+=1/60;if(idleT>4.2){idleT=0;ripples.push({x:W/2+x,y:H/2-y+R*1.1,t,big:0.5});}
-  if(mesh){const wob=0.03*Math.sin(t*2.2);mesh.scale.set(R*(1+f*0.22+wob),R*(1-f*0.25-wob),R*(1+f*0.22+wob));mesh.position.set(x,y,0);mesh.rotation.set(Math.sin(t*.5)*.06,t*0.3,Math.sin(t*.7)*0.07);renderer.render(scene,cam);}
-  cx.clearRect(0,0,W,H);
-  ripples=ripples.filter(r=>t-r.t<4.5);
-  for(const r of ripples){const a=t-r.t;
-    cx.beginPath();cx.ellipse(r.x,r.y,a*90*r.big+R*.4,(a*90*r.big+R*.4)*0.32,0,0,7);cx.fillStyle='rgba(143,189,184,'+Math.max(0,0.10-a*0.022)*r.big+')';cx.fill();
-    for(let k=0;k<4;k++){const rr=(a-k*0.28)*120*r.big;if(rr<=0)continue;cx.beginPath();cx.ellipse(r.x,r.y,rr,rr*0.32,0,0,7);cx.strokeStyle='rgba(36,80,78,'+Math.max(0,(0.32-a*0.07))*(1-k*0.2)+')';cx.lineWidth=1.2;cx.stroke();}}
-  if(!reduce)requestAnimationFrame(frame);
-}
-frame();
-</script>
 </body>
 </html>
