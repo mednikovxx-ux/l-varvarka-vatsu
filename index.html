@@ -109,6 +109,8 @@ section{position:relative}
 .arch video,.arch img{width:100%;height:100%;object-fit:cover}
 .arch figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;color:#fff;font-size:15px;background:linear-gradient(0deg,rgba(18,48,47,.55),rgba(18,48,47,0))}
 
+.arch video.session{aspect-ratio:3/2;filter:saturate(.82) sepia(.08) brightness(1.03)}
+.what .arch{aspect-ratio:3/2}
 /* после сеанса */
 .after{background:rgba(230,240,236,.72)}
 .after .wv{position:absolute;left:0;width:100%;height:clamp(36px,5vw,72px);pointer-events:none}
@@ -282,6 +284,9 @@ main,footer.foot{position:relative;z-index:1}
   .arch{width:100%}
 }
 @media (max-width:640px){
+  .what .arch{aspect-ratio:auto;overflow:visible;background:none}
+  .what .arch video{height:auto}
+  .what .arch figcaption{position:static;background:none;color:var(--soft);padding:14px 0 0}
   body{font-size:16px}
   .bar .where{display:none}
   .hero{min-height:max(600px,100svh)}
@@ -347,8 +352,8 @@ main,footer.foot{position:relative;z-index:1}
         <p><a class="btn" href="#book" data-book>Записаться онлайн</a></p>
       </div>
       <figure class="arch rv" style="--d:.12s">
-        <video data-lazy autoplay muted loop playsinline preload="none" poster="media/pool-poster.jpg" aria-hidden="true"><source data-src="media/pool-1280.mp4" type="video/mp4"></video>
-        <figcaption>Бассейн 34 °C, глубина 1,7 м. Стоять не нужно: вас держит мастер.</figcaption>
+        <video class="session" data-lazy autoplay muted loop playsinline preload="none" poster="media/session-poster.jpg" aria-label="Сеанс ватсу: мастер держит голову гостьи на воде"><source data-src="media/session-1152.mp4" type="video/mp4"></video>
+        <figcaption>Так проходит сеанс: мастер держит голову и ведёт вас по воде 34 °C.</figcaption>
       </figure>
     </div>
   </section>
