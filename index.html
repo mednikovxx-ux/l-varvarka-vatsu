@@ -123,14 +123,20 @@ section{position:relative}
 .three ul{padding:0}
 
 /* кому */
-.who{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
-.who .txt{display:flex;flex-direction:column;gap:20px;position:sticky;top:40px}
+.who{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);position:relative}
+.who-col{grid-column:2;display:flex;flex-direction:column;gap:32px}
+.who .txt{display:flex;flex-direction:column;gap:16px}
+/* видео гостьи: приближено и растворяется в молочный фон к тексту */
+.who-media{position:absolute;top:0;bottom:0;left:0;width:min(56vw,860px);overflow:hidden;pointer-events:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
+.who-media video{width:100%;height:100%;object-fit:cover;object-position:62% 45%;transform:scale(1.14);transform-origin:62% 45%;filter:saturate(.85) sepia(.12) brightness(1.04)}
+.who-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.55) 82%,var(--cream) 100%)}
 .rows{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
 .rows li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:28px 30px;background:rgba(243,241,226,.82)}
 .rows strong{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.2vw,30px);line-height:1.15;color:var(--wine)}
 .rows span{color:var(--soft)}
 
-.small-arch{max-width:420px;margin-top:16px;aspect-ratio:16/10}
 /* отзыв */
 .quote{color:#fff;overflow:hidden;isolation:isolate}
 .quote video,.quote .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
@@ -271,7 +277,10 @@ main,footer.foot{position:relative;z-index:1}
   .bar nav{display:none}
   .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
   .who .txt{position:static}
-  .small-arch{display:none}
+  .who-col{grid-column:1/-1}
+  .who-media{position:relative;width:100%;height:70vh;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
+  .who-media::after{background:none}
   .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
   .masters{grid-template-columns:minmax(0,1fr)}
   .arch{width:100%}
@@ -371,18 +380,22 @@ main,footer.foot{position:relative;z-index:1}
   </section>
 
   <section class="panel sec">
+    <div class="who-media" aria-hidden="true">
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/guest-poster.jpg"><source data-src="media/guest-720.mp4" type="video/mp4"></video>
+    </div>
     <div class="wrap who">
-      <div class="txt rv">
-        <h2 class="kicker-h">Кому подходит</h2>
-        <p class="lead">Сеанс всегда индивидуальный: только вы, мастер и вода.</p>
-        <figure class="arch small-arch"><img src="media/hero-poster.jpg" width="1600" height="1000" alt="Тёплая вода бассейна с мягкими кругами" loading="lazy"></figure>
+      <div class="who-col">
+        <div class="txt rv">
+          <h2 class="kicker-h">Кому подходит</h2>
+          <p class="lead">Сеанс всегда индивидуальный: только вы, мастер и вода.</p>
+        </div>
+        <ul class="rows">
+          <li class="rv"><strong>Тем, кто устал</strong><span>Много работы, стресс, плохой сон. Для этого к нам приходят чаще всего.</span></li>
+          <li class="rv"><strong>Будущим мамам</strong><span>Вода забирает вес и разгружает спину. Мастер заранее спросит о сроке и самочувствии.</span></li>
+          <li class="rv"><strong>Детям и подросткам</strong><span>В том числе гиперактивным и детям с ДЦП. Цена для детей та же, что для взрослых.</span></li>
+          <li class="rv"><strong>Тем, кто не умеет плавать</strong><span>Плавать не нужно: мастер держит вас весь сеанс, лицо остаётся над водой.</span></li>
+        </ul>
       </div>
-      <ul class="rows">
-        <li class="rv"><strong>Тем, кто устал</strong><span>Много работы, стресс, плохой сон. Для этого к нам приходят чаще всего.</span></li>
-        <li class="rv"><strong>Будущим мамам</strong><span>Вода забирает вес и разгружает спину. Мастер заранее спросит о сроке и самочувствии.</span></li>
-        <li class="rv"><strong>Детям и подросткам</strong><span>В том числе гиперактивным и детям с ДЦП. Цена для детей та же, что для взрослых.</span></li>
-        <li class="rv"><strong>Тем, кто не умеет плавать</strong><span>Плавать не нужно: мастер держит вас весь сеанс, лицо остаётся над водой.</span></li>
-      </ul>
     </div>
   </section>
 
