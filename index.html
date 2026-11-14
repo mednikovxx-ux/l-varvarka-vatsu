@@ -105,11 +105,11 @@ section{position:relative}
 .what .txt{grid-column:1}
 /* видео сеанса: справа, приближено, растворяется в молочный фон к тексту (зеркально блоку «Кому подходит») */
 .what-sec{overflow:hidden}
-.what-media{position:absolute;top:50%;right:0;width:min(62vw,980px);aspect-ratio:1200/760;transform:translateY(-50%);pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);
-  -webkit-mask-composite:source-in;mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
-.what-media video{width:100%;height:100%;object-fit:cover;object-position:62% 30%;filter:saturate(.8) sepia(.1) brightness(1.04)}
-.what-media::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.5) 80%,var(--cream) 100%)}
+.what-media{position:absolute;top:50%;right:max(0px,calc((100vw - 1200px)/2 - 40px));height:min(86%,760px);aspect-ratio:464/848;transform:translateY(-50%);pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 10%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 10%,#000 86%,transparent 100%);mask-composite:intersect}
+.what-media video{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.8) sepia(.1) brightness(1.04)}
+.what-media::after{content:none}
 .what .txt{display:flex;flex-direction:column;gap:22px}
 .statement{font-family:var(--serif);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
 .what p.body{max-width:52ch;color:var(--soft)}
@@ -149,7 +149,20 @@ section{position:relative}
 .quote{color:#fff;overflow:hidden;isolation:isolate}
 .quote video,.quote .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .quote::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,52,51,.55)}
-.quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;padding-block:clamp(110px,13vw,190px)}
+.quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(90px,10vw,140px) 40px}
+.kicker-h.light{color:#E9DFA9}
+.quote::before{background:linear-gradient(180deg,rgba(18,48,47,.62),rgba(18,48,47,.78))!important}
+.rrow{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px max(20px,calc((100vw - 1200px)/2 + 20px)) 26px;scrollbar-width:thin;scrollbar-color:rgba(253,255,240,.4) transparent}
+.rcard{flex:0 0 clamp(270px,26vw,340px);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;padding:26px;background:rgba(253,255,240,.94);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s}
+.rcard:hover{transform:translateY(-6px);background:#fff}
+.rstars{font-weight:600;color:var(--wine);font-size:15px}
+.rstars::before{content:"★★★★★ ";color:#C9A23A;letter-spacing:.1em}
+.rtag{align-self:flex-start;font-size:13px;font-weight:600;color:var(--sea);background:var(--mist);padding:3px 10px}
+.rtext{font-family:var(--serif);font-size:19px;line-height:1.35;flex:1}
+.rwho{display:flex;flex-direction:column;font-size:14px;color:var(--soft)}
+.rwho b{color:var(--ink);font-weight:600;font-size:15px}
+.rsrc{font-size:14px;font-weight:600;color:var(--sea)}
+.srcs-wrap{padding-bottom:clamp(70px,8vw,110px)}
 .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.2vw,46px);line-height:1.2;max-width:24ch}
 .quote p{font-size:15px;opacity:.9}
 .stars{letter-spacing:.3em;font-size:18px;color:#F2DFA0}
@@ -276,6 +289,34 @@ main,footer.foot{position:relative;z-index:1}
 .hero,.quote,.book{z-index:2}
 .word{font-family:var(--display);letter-spacing:.06em;text-transform:uppercase}
 
+
+/* подвал: вода в глубине, волна сверху, блик проходит по слову */
+.fx{position:relative;overflow:hidden;isolation:isolate;background:var(--sea2);color:#E8EEE6;padding:clamp(70px,7vw,100px) 0 0;border-top:1px solid rgba(233,223,169,.18);margin-top:0;display:block}
+.fx .fwave{position:absolute;top:-1px;left:0;width:100%;height:clamp(40px,5vw,80px);z-index:1}
+.fx .fwave path{fill:var(--cream)}
+.fx .fbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;z-index:-1;mix-blend-mode:screen}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;position:relative;z-index:1}
+.fbrand img{width:200px;height:auto;filter:brightness(0) invert(1);opacity:.95}
+.fbrand p{margin-top:18px;max-width:30ch;color:#C9D6CF;font-size:16px}
+.fcol{display:flex;flex-direction:column;gap:10px;font-size:16px}
+.fcol h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;color:#E9DFA9;margin-bottom:6px}
+.fcol a{color:#E8EEE6;text-decoration:none;transition:color .2s,transform .2s;align-self:flex-start}
+.fcol a:hover{color:#fff;transform:translateX(4px)}
+.ftel{font-family:var(--serif);font-size:30px;white-space:nowrap}
+.fsoc{display:flex;flex-wrap:wrap;gap:8px}
+.fsoc a{padding:8px 14px;outline:1px solid rgba(233,223,169,.5);outline-offset:-1px;font-size:14px;font-weight:600}
+.fsoc a:hover{background:rgba(233,223,169,.15);transform:none}
+.fmore{font-weight:600;color:#E9DFA9!important}
+.fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 40px;margin-top:56px;padding-top:22px;border-top:1px solid rgba(233,223,169,.2);font-size:14px;color:#AFC1B8;position:relative;z-index:1}
+.fbottom .note{font-weight:600;color:#E8EEE6;font-size:15px;flex-basis:auto}
+.fbottom a{color:inherit}
+.fword{font-family:var(--display);font-size:clamp(70px,16vw,260px);line-height:.8;letter-spacing:.06em;text-align:center;margin-top:30px;white-space:nowrap;
+  color:transparent;background:linear-gradient(100deg,rgba(233,223,169,.14) 0%,rgba(233,223,169,.14) 40%,rgba(255,250,215,.55) 50%,rgba(233,223,169,.14) 60%,rgba(233,223,169,.14) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 7s ease-in-out infinite;user-select:none;transform:translateY(12%)}
+@keyframes shine{0%{background-position:120% 0}100%{background-position:-20% 0}}
+@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.fgrid{grid-template-columns:1fr;gap:32px}.fx{padding-bottom:70px}.fword{margin-top:20px}}
+@media (prefers-reduced-motion:reduce){.fword{animation:none}}
+
 /* ---------- горизонтальная прокрутка (компьютер) ---------- */
 .h-on .hwrap{position:relative}
 .h-on .track{position:sticky;top:0;height:100vh;display:flex;width:max-content;will-change:transform}
@@ -307,10 +348,10 @@ main,footer.foot{position:relative;z-index:1}
   .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
   .who .txt{position:static}
   .what{min-height:0}
-  .what-media{position:relative;top:auto;transform:none;aspect-ratio:auto;width:100%;height:56vh;
+  .what-media{position:relative;top:auto;right:auto;transform:none;aspect-ratio:464/848;width:min(100%,420px);height:auto;margin:0 auto;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
   .what-media::after{background:none}
-  .what-media video{object-position:58% 40%}
+
   .who-col{grid-column:1/-1}
   .who-media{position:relative;width:100%;height:70vh;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
@@ -396,8 +437,8 @@ addEventListener('load',function(){scrollTo(0,0);});
         <p><a class="btn" href="#book" data-book>Записаться онлайн</a></p>
       </div>
     </div>
-    <div class="what-media" role="img" aria-label="Сеанс ватсу: мастер держит голову гостьи на воде">
-      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-face.jpg?v=2" aria-hidden="true"><source data-src="media/session-face.mp4?v=2" type="video/mp4"></video>
+    <div class="what-media" role="img" aria-label="Сеанс ватсу: мастер ведёт гостью по воде">
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/procedure.jpg" aria-hidden="true"><source data-src="media/procedure.mp4" type="video/mp4"></video>
     </div>
   </section>
 
@@ -443,12 +484,53 @@ addEventListener('load',function(){scrollTo(0,0);});
     </div>
   </section>
 
-  <section class="panel quote">
-    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/hero-poster.jpg" aria-hidden="true"><source data-src="media/hero-960.mp4" type="video/mp4"></video>
-    <div class="wrap in rv">
-      <a class="qlink" href="https://yandex.ru/maps/47/nizhny-novgorod/search/%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%BA%D0%B0%20%D0%91%D0%B0%D1%80%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2015/" target="_blank" rel="noopener"><blockquote>«Просто волшебство какое-то! Не помню, когда спала так в последний раз: 8 часов подряд»</blockquote></a>
-      <p>Гостья после сеанса ватсу</p>
-      <p class="srcs"><a href="https://yandex.ru/maps/47/nizhny-novgorod/search/%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%BA%D0%B0%20%D0%91%D0%B0%D1%80%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2015/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a><a href="https://2gis.ru/n_novgorod/search/%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%BA%D0%B0%20%D0%91%D0%B0%D1%80%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2015" target="_blank" rel="noopener">Отзывы в 2ГИС</a></p>
+  <section class="panel quote" id="reviews">
+    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-face.jpg?v=2" aria-hidden="true"><source data-src="media/session-face.mp4?v=2" type="video/mp4"></video>
+    <div class="wrap in">
+      <h2 class="kicker-h light rv">Отзывы гостей</h2>
+      <blockquote class="rv">«Просто волшебство какое-то! Не помню, когда спала так в последний раз: 8 часов подряд»</blockquote>
+      <p class="rv">Гостья после сеанса ватсу</p>
+    </div>
+    <div class="rrow" aria-label="Отзывы с Яндекс Карт">
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span><span class="rtag">про ватсу</span>
+          <span class="rtext">«Посетила сеанс Ватсу! Елена Калинкина просто волшебница! Всем советую попробовать данное направление, тело в теплом бассейне расслабляется, а плавные движения в воде погружают как будто в транс.»</span>
+          <span class="rwho"><b>Алексей Л.</b>8 августа 2026</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
+          <span class="rtext">«Я нашла место, где можно отдохнуть и душой и телом! Изумительное место, очень хороший и отзывчивый персонал. Гармонично, эстетично, уютно, комфортно, чисто, атмосферно… Советую!»</span>
+          <span class="rwho"><b>Zhanna Borisova</b>22 октября 2025</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
+          <span class="rtext">«Прекрасное место, где можно отдохнуть семьей, провести время с пользой для здоровья. Чистый, тёплый бассейн, прекрасная баня, отличные мастера.»</span>
+          <span class="rwho"><b>marina u.</b>25 октября 2025</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
+          <span class="rtext">«Рад, что в городе открылось такое СПА! Место классное. Есть парковка, это очень удобно. Внутри баня, бассейн. Массажные кабинеты очень комфортные.»</span>
+          <span class="rwho"><b>Арсений Куприянов</b>21 октября 2025</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
+          <span class="rtext">«Душевное место! Приветливый персонал, мастера высшего уровня! Посещала спа-программу, в полном восторге! Место, куда хочется возвращаться.»</span>
+          <span class="rwho"><b>Кристина Г.</b>1 ноября 2025</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
+          <span class="rtext">«Очень люблю эту сеть спа салонов, решила в том числе посетить и этот филиал. Эмоции чисто положительные, везде опрятно, гигиенично. Вежливые мастера.»</span>
+          <span class="rwho"><b>Анна Л.</b>22 октября 2025</span>
+          <span class="rsrc">Яндекс Карты →</span>
+        </a>
+    </div>
+    <div class="wrap srcs-wrap">
+      <p class="srcs"><a href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">Все отзывы на Яндекс Картах</a><a href="https://2gis.ru/n_novgorod/search/%D0%92%D0%B0%D1%80%D0%B2%D0%B0%D1%80%D0%BA%D0%B0%20%D0%91%D0%B0%D1%80%D0%BC%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2015" target="_blank" rel="noopener">Отзывы в 2ГИС</a></p>
     </div>
   </section>
 
@@ -523,7 +605,7 @@ addEventListener('load',function(){scrollTo(0,0);});
       <div class="txt rv">
         <h2 class="kicker-h">Вопросы</h2>
         <p class="lead">Не нашли ответ? Позвоните, администратор ответит сразу.</p>
-        <p><a class="btn" href="tel:88314110444">8 (831) 411-04-44</a></p>
+        <p><a class="btn" href="#book">Связаться с нами</a></p>
       </div>
       <div class="rv qs" style="--d:.1s">
         <details open><summary>Я не умею плавать. Мне можно?<i aria-hidden="true"></i></summary><p>Да. Мастер держит вас весь сеанс, лицо остаётся над водой. Глубина 1,7 м, но стоять и плыть не нужно.</p></details>
@@ -559,11 +641,38 @@ addEventListener('load',function(){scrollTo(0,0);});
   </section>
 </main>
 
-<footer class="wrap panel foot">
-  <img src="img/logo.png" width="170" height="73" alt="Варварка — спа и медицина" loading="lazy">
-  <span>ул. Барминская, 15 · ежедневно 10:00–22:00</span>
-  <a href="tel:88314110444">8 (831) 411-04-44</a>
-  <p class="note">Имеются противопоказания. Необходима консультация специалиста.</p>
+<footer class="panel foot fx" id="contacts">
+  <video class="fbg" data-lazy autoplay muted loop playsinline preload="none" poster="media/pool-poster.jpg" aria-hidden="true"><source data-src="media/pool-1280.mp4" type="video/mp4"></video>
+  <div class="wrap fgrid">
+    <div class="fbrand">
+      <img src="img/logo.png" width="200" height="86" alt="Варварка — спа и медицина" loading="lazy">
+      <p>Купеческое спа со славянской душой. Ватсу — в тёплом бассейне на Барминской.</p>
+    </div>
+    <div class="fcol">
+      <h3>Где мы</h3>
+      <p>Нижний Новгород,<br>ул. Барминская, 15</p>
+      <p>Ежедневно 10:00–22:00</p>
+      <a class="fmore" href="https://yandex.ru/maps/org/varvarka/209418957768/" target="_blank" rel="noopener">Как добраться →</a>
+    </div>
+    <div class="fcol">
+      <h3>Связь</h3>
+      <a class="ftel" href="tel:88314110444">8 (831) 411-04-44</a>
+      <div class="fsoc">
+        <a href="https://wa.me/79047837810" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://t.me/varvarka_spa/" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://vk.com/varvarkaspa/" target="_blank" rel="noopener">ВКонтакте</a>
+      </div>
+    </div>
+    <nav class="fcol" aria-label="Разделы">
+      <h3>Разделы</h3>
+      <a href="#what">Что такое ватсу</a><a href="#visit">Как проходит визит</a><a href="#masters">Мастера</a><a href="#price">Цены</a><a href="#reviews">Отзывы</a><a href="#book">Запись</a>
+    </nav>
+  </div>
+  <div class="wrap fbottom">
+    <p class="note">Имеются противопоказания. Необходима консультация специалиста.</p>
+    <p>© Варварка СПА · <a href="https://varvarkaspa.ru/politic-data/" target="_blank" rel="noopener">Политика обработки данных</a> · <a href="https://varvarkaspa.ru/" target="_blank" rel="noopener">varvarkaspa.ru</a></p>
+  </div>
+  <div class="fword" aria-hidden="true">ВАРВАРКА</div>
 </footer>
 </div></div>
 
