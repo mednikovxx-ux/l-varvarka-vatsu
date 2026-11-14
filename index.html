@@ -155,12 +155,36 @@ section{position:relative}
 .stars{letter-spacing:.3em;font-size:18px;color:#F2DFA0}
 
 /* визит */
-.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:56px;counter-reset:s}
-.steps li{display:flex;flex-direction:column;gap:12px;position:relative;padding-top:34px}
-.steps li::before{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;background:var(--gold);transform:rotate(45deg)}
-.steps .t{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1;color:var(--sea)}
+/* визит: путь по воде — линия «течёт» от шага к шагу при прокрутке, капля плывёт по ней, в точках расходятся круги */
+.journey{position:relative;margin-top:40px;--p:0}
+.jl{position:absolute;pointer-events:none;overflow:visible}
+.jl-h{left:0;right:0;top:0;width:100%;height:200px}
+.jl-v{display:none}
+.jl path{fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.jl-base{stroke:#DCE6DF;stroke-width:2;stroke-dasharray:2 9}
+.jl-flow{stroke:var(--aqua);stroke-width:3}
+.jdrop{position:absolute;left:0;top:0;width:18px;height:24px;margin:-20px 0 0 -9px;pointer-events:none;
+  background:var(--sea);border-radius:50% 50% 50% 50%/60% 60% 40% 40%;clip-path:path("M9 0 C12 7 18 12 18 16 A9 9 0 0 1 0 16 C0 12 6 7 9 0 Z");opacity:.9;will-change:transform}
+.jdrop::after{content:"";position:absolute;left:4px;top:11px;width:4px;height:7px;border-radius:50%;background:rgba(253,255,240,.85)}
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;position:relative}
+.steps li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;position:relative;padding-top:200px}
+.steps p{max-width:26ch}
+.steps .pt{position:absolute;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;background:var(--cream);box-shadow:inset 0 0 0 2px var(--aqua);transition:background .5s,box-shadow .5s}
+.steps li:nth-child(1) .pt{left:calc(50% - 0px);top:48px}
+.steps li:nth-child(2) .pt{left:50%;top:152px}
+.steps li:nth-child(3) .pt{left:50%;top:48px}
+.steps li:nth-child(4) .pt{left:50%;top:152px}
+.steps .pt::before,.steps .pt::after{content:"";position:absolute;inset:-2px;border-radius:50%;box-shadow:inset 0 0 0 1.5px var(--aqua);opacity:0}
+.steps li.on .pt{background:var(--aqua);box-shadow:inset 0 0 0 2px var(--sea)}
+.steps li.on .pt::before{animation:ring 2.6s ease-out infinite}
+.steps li.on .pt::after{animation:ring 2.6s ease-out 1.3s infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(3.6);opacity:0}}
+.steps .t{font-family:var(--serif);font-weight:500;font-size:34px;line-height:1;color:var(--sea);transition:color .5s}
 .steps h3{font:600 18px/1.3 var(--text)}
 .steps p{color:var(--soft);font-size:16px}
+.steps li{opacity:.45;transition:opacity .6s}
+.steps li.on{opacity:1}
+.no-js .steps li,.steps.static li{opacity:1}
 .bring{margin-top:48px;background:var(--sand);padding:26px 30px;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center}
 .bring b{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--wine)}
 
@@ -306,7 +330,12 @@ main,footer.foot{position:relative;z-index:1}
   .three li svg{grid-row:span 2;width:56px;height:56px}
   .three h3{font-size:26px}
   .rows li{grid-template-columns:minmax(0,1fr);gap:6px;padding:22px}
-  .steps{grid-template-columns:minmax(0,1fr)}
+  .steps{grid-template-columns:minmax(0,1fr);gap:40px;padding-left:64px}
+  .jl-h{display:none}
+  .jl-v{display:block;left:0;top:0;width:60px;height:100%}
+  .steps li{padding-top:0;min-height:120px;align-items:flex-start;text-align:left}
+  .steps .pt{left:-64px!important;margin-left:0}
+  .steps .pt{margin:-10px 0 0 -10px}
   .master{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:18px}
   .master h3{font-size:26px}
   details p{padding-right:0}
@@ -426,12 +455,23 @@ addEventListener('load',function(){scrollTo(0,0);});
   <section class="panel sec" id="visit">
     <div class="wrap">
       <h2 class="kicker-h rv">Как проходит визит</h2>
-      <ol class="steps">
-        <li class="rv"><span class="t">до сеанса</span><h3>Знакомство</h3><p>Мастер спросит о самочувствии и о том, что для вас комфортно.</p></li>
-        <li class="rv" style="--d:.08s"><span class="t">60 мин</span><h3>Сеанс в воде</h3><p>Вы лежите на спине в тёплой воде, мастер держит и ведёт вас.</p></li>
-        <li class="rv" style="--d:.16s"><span class="t">15 мин</span><h3>Баня</h3><p>Мягкий прогрев после бассейна.</p></li>
-        <li class="rv" style="--d:.24s"><span class="t">без спешки</span><h3>Чай и отдых</h3><p>Зона отдыха, халат и чай уже входят в визит.</p></li>
-      </ol>
+      <div class="journey" id="journey">
+        <svg class="jl jl-h" viewBox="0 0 1200 200" preserveAspectRatio="none" aria-hidden="true">
+          <path class="jl-base" d="M0,100 C60,100 90,48 150,48 C270,48 330,152 450,152 C570,152 630,48 750,48 C870,48 930,152 1050,152 C1110,152 1140,100 1200,100"/>
+          <path class="jl-flow" d="M0,100 C60,100 90,48 150,48 C270,48 330,152 450,152 C570,152 630,48 750,48 C870,48 930,152 1050,152 C1110,152 1140,100 1200,100"/>
+        </svg>
+        <svg class="jl jl-v" viewBox="0 0 60 1000" preserveAspectRatio="none" aria-hidden="true">
+          <path class="jl-base" d="M30,0 C30,60 12,90 12,125 C12,250 48,250 48,375 C48,500 12,500 12,625 C12,750 48,750 48,875 C48,935 30,960 30,1000"/>
+          <path class="jl-flow" d="M30,0 C30,60 12,90 12,125 C12,250 48,250 48,375 C48,500 12,500 12,625 C12,750 48,750 48,875 C48,935 30,960 30,1000"/>
+        </svg>
+        <span class="jdrop" aria-hidden="true"></span>
+        <ol class="steps">
+          <li><span class="pt" aria-hidden="true"></span><span class="t">до сеанса</span><h3>Знакомство</h3><p>Мастер спросит о самочувствии и о том, что для вас комфортно.</p></li>
+          <li><span class="pt" aria-hidden="true"></span><span class="t">60 мин</span><h3>Сеанс в воде</h3><p>Вы лежите на спине в тёплой воде, мастер держит и ведёт вас.</p></li>
+          <li><span class="pt" aria-hidden="true"></span><span class="t">15 мин</span><h3>Баня</h3><p>Мягкий прогрев после бассейна.</p></li>
+          <li><span class="pt" aria-hidden="true"></span><span class="t">без спешки</span><h3>Чай и отдых</h3><p>Зона отдыха, халат и чай уже входят в визит.</p></li>
+        </ol>
+      </div>
       <p class="bring rv"><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
     </div>
   </section>
@@ -588,6 +628,33 @@ addEventListener('load',function(){scrollTo(0,0);});
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
   addEventListener('load',layout);
 
+
+
+  /* путь визита: линия заполняется по прокрутке, капля плывёт по ней, шаги «загораются» */
+  (function(){
+    var J=document.getElementById('journey');if(!J)return;
+    var items=[].slice.call(J.querySelectorAll('.steps li')),drop=J.querySelector('.jdrop');
+    if(reduce){items.forEach(function(li){li.classList.add('on');});J.querySelectorAll('.jl-flow').forEach(function(f){f.style.strokeDasharray='none';});drop.style.display='none';return;}
+    function svgVis(){var h=J.querySelector('.jl-h');return getComputedStyle(h).display!=='none'?h:J.querySelector('.jl-v');}
+    var flowLen={};
+    function update(){
+      var svg=svgVis(),flow=svg.querySelector('.jl-flow'),r=J.getBoundingClientRect();
+      var p=Math.min(1,Math.max(0,(innerHeight*0.88-r.top)/(Math.max(r.height,innerHeight*0.55)+innerHeight*0.25)));
+      var L=flow.getTotalLength();flow.style.strokeDasharray=L;flow.style.strokeDashoffset=L*(1-p);
+      var pt=flow.getPointAtLength(L*p),vb=svg.viewBox.baseVal,sr=svg.getBoundingClientRect();
+      var x=(pt.x/vb.width)*sr.width+(sr.left-r.left),y=(pt.y/vb.height)*sr.height+(sr.top-r.top);
+      drop.style.transform='translate('+x+'px,'+y+'px)';drop.style.opacity=p>0.01&&p<0.995?.9:0;
+      var marks=svg===J.querySelector('.jl-h')?[0.14,0.39,0.63,0.88]:[0.13,0.38,0.63,0.88];
+      items.forEach(function(li,i){li.classList.toggle('on',p>=marks[i]);});
+      if(svg!==J.querySelector('.jl-h')){
+        items.forEach(function(li,i){var dot=li.querySelector('.pt'),ty=li.offsetTop+16,lo=0,hi=L;
+          for(var k=0;k<22;k++){var mid=(lo+hi)/2,q=flow.getPointAtLength(mid);((q.y/vb.height)*sr.height<ty)?lo=mid:hi=mid;}
+          var q2=flow.getPointAtLength(lo);dot.style.setProperty('left',((q2.x/vb.width)*sr.width-64)+'px','important');dot.style.setProperty('top','16px','important');
+          marks[i]=lo/L;li.classList.toggle('on',p>=marks[i]-0.02);});
+      }
+    }
+    addEventListener('scroll',update,{passive:true});addEventListener('resize',update);update();
+  })();
 
   /* онлайн-запись: виджет Reservi (тот же, что на сайте Варварки) */
   function openBooking(e){
