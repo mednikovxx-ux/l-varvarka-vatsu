@@ -101,15 +101,15 @@ section{position:relative}
 .sec{padding-block:clamp(88px,10vw,150px)}
 
 /* что такое ватсу */
-.what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;position:relative;z-index:1;min-height:clamp(520px,44vw,680px)}
+.what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;position:relative;z-index:1;min-height:clamp(600px,52vw,820px)}
 .what .txt{grid-column:1}
 /* видео сеанса: справа, приближено, растворяется в молочный фон к тексту (зеркально блоку «Кому подходит») */
 .what-sec{overflow:hidden}
-.what-media{position:absolute;top:50%;right:0;width:min(62vw,960px);aspect-ratio:832/480;transform:translateY(-50%);pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
-.what-media video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.8) sepia(.1) brightness(1.04)}
-.what-media::after{content:none}
+.what-media{position:absolute;top:0;bottom:0;right:0;width:min(62vw,980px);pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(270deg,#000 0%,#000 46%,rgba(0,0,0,.55) 70%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
+.what-media video{width:100%;height:100%;object-fit:cover;object-position:58% 55%;filter:saturate(.8) sepia(.1) brightness(1.04)}
+.what-media::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.5) 80%,var(--cream) 100%)}
 .what .txt{display:flex;flex-direction:column;gap:22px}
 .statement{font-family:var(--serif);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
 .what p.body{max-width:52ch;color:var(--soft)}
@@ -327,6 +327,19 @@ main,footer.foot{position:relative;z-index:1}
 @media (max-width:640px){.fgrid{grid-template-columns:1fr;gap:32px}.fx{padding-bottom:70px}.fword{margin-top:20px}}
 @media (prefers-reduced-motion:reduce){.fword{animation:none}}
 
+
+/* веточки, как в венке логотипа Варварки */
+.sprig{position:absolute;width:clamp(84px,8vw,124px);height:clamp(84px,8vw,124px);pointer-events:none;z-index:2;overflow:visible}
+.sprig.tl{left:-30px;top:-30px}
+.sprig.br{right:-30px;bottom:-30px;transform:rotate(180deg)}
+.sprig.tr{right:-30px;top:-30px;transform:scaleX(-1)}
+.phw{position:relative;margin:8px}
+.phw .ph{margin:0}
+.bring{position:relative;box-shadow:0 22px 44px -24px rgba(60,50,30,.35)}
+.first{overflow:visible!important}
+.card{position:relative;box-shadow:0 26px 50px -28px rgba(10,30,30,.5)}
+@media (max-width:640px){.sprig{width:76px;height:76px}.sprig.tl{left:-16px;top:-18px}.sprig.br{right:-16px;bottom:-18px}.sprig.tr{right:-12px;top:-18px}}
+
 /* ---------- горизонтальная прокрутка (компьютер) ---------- */
 .h-on .hwrap{position:relative}
 .h-on .track{position:sticky;top:0;height:100vh;display:flex;width:max-content;will-change:transform}
@@ -358,9 +371,10 @@ main,footer.foot{position:relative;z-index:1}
   .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
   .who .txt{position:static}
   .what{min-height:0}
-  .what-media{position:relative;top:auto;right:auto;transform:none;aspect-ratio:832/480;width:100%;height:auto;margin:0;
+  .what-media{position:relative;top:auto;right:auto;bottom:auto;transform:none;aspect-ratio:auto;width:100%;height:62vh;margin:0;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
   .what-media::after{background:none}
+  .what-media video{object-position:42% 55%}
 
   .who-col{grid-column:1/-1}
   .who-media{position:relative;width:100%;height:70vh;
@@ -402,6 +416,7 @@ addEventListener('load',function(){scrollTo(0,0);});
 </script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sprig" viewBox="0 0 120 120"><path d="M13 112 C11 70 18 34 52 19 C70 12 90 11.5 112 12" fill="none" stroke="#6E7A44" stroke-width="1.3" stroke-linecap="round"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(12 96) rotate(-112) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(12.5 82) rotate(-38) scale(0.95)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(15 67) rotate(-128) scale(1.05)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#6E7A44" transform="translate(20 52) rotate(-32) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(29 39) rotate(-145) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(41 28) rotate(-55) scale(1.05)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(55 20) rotate(-160) scale(0.95)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#6E7A44" transform="translate(71 15) rotate(-70) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(88 12.5) rotate(-175) scale(0.9)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(104 12) rotate(-12) scale(0.85)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(13 104) rotate(-60) scale(0.75)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(16 60) rotate(-85) scale(0.7)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(35 33) rotate(-100) scale(0.75)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(63 17) rotate(-120) scale(0.7)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(96 12) rotate(-100) scale(0.65)"/><circle cx="23" cy="74" r="3.2" fill="#7B4945"/><circle cx="17" cy="106" r="2.6" fill="#7B4945"/><circle cx="47" cy="21" r="2.8" fill="#7B4945"/><circle cx="80" cy="22" r="2.3" fill="#A08F45"/><circle cx="9" cy="58" r="2" fill="#A08F45"/><circle cx="60" cy="27" r="1.8" fill="#7B4945"/></symbol></svg>
 <div class="hwrap" id="hwrap"><div class="track" id="track">
 <header class="hero panel" id="top">
   <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg" aria-hidden="true">
@@ -540,7 +555,7 @@ addEventListener('load',function(){scrollTo(0,0);});
           <li><span class="pt" aria-hidden="true"></span><span class="t">без спешки</span><h3>Чай и отдых</h3><p>Зона отдыха, халат и чай уже входят в визит.</p></li>
         </ol>
       </div>
-      <p class="bring rv"><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
+      <p class="bring rv"><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
     </div>
   </section>
 
@@ -549,11 +564,11 @@ addEventListener('load',function(){scrollTo(0,0);});
       <h2 class="kicker-h rv">Вас держат надёжные руки</h2>
       <div class="masters">
         <article class="master rv">
-          <figure class="ph"><img src="img/gordeeva.jpg" style="object-position:50% 62%;transform:scale(1.18);transform-origin:50% 55%" width="720" height="1280" alt="Галина Гордеева, мастер ватсу" loading="lazy"></figure>
+          <div class="phw"><figure class="ph"><img src="img/gordeeva.jpg" style="object-position:50% 62%;transform:scale(1.18);transform-origin:50% 55%" width="720" height="1280" alt="Галина Гордеева, мастер ватсу" loading="lazy"></figure><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg></div>
           <div><h3>Галина Гордеева</h3><p class="role">Стаж больше 10 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
         <article class="master rv" style="--d:.1s">
-          <figure class="ph"><img src="img/kalinkina.jpg" style="object-position:50% 45%" width="999" height="1280" alt="Елена Калинкина, мастер ватсу" loading="lazy"></figure>
+          <div class="phw"><figure class="ph"><img src="img/kalinkina.jpg" style="object-position:50% 45%" width="999" height="1280" alt="Елена Калинкина, мастер ватсу" loading="lazy"></figure><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg></div>
           <div><h3>Елена Калинкина</h3><p class="role">Стаж 4–5 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
       </div>
@@ -565,7 +580,7 @@ addEventListener('load',function(){scrollTo(0,0);});
     <div class="wrap">
       <h2 class="kicker-h rv">Стоимость</h2>
       <div class="grid">
-        <div class="first rv">
+        <div class="first rv"><svg class="sprig tr" aria-hidden="true"><use href="#sprig"/></svg>
           <h3>Первый визит: знакомство с ватсу</h3>
           <p class="sum">3 600 ₽<s>4 500 ₽</s></p>
           <p>Час в воде с мастером, 15 минут бани, чай и отдых. Для взрослых и детей одна цена.</p>
@@ -615,7 +630,7 @@ addEventListener('load',function(){scrollTo(0,0);});
           <a class="btn ghost" href="https://t.me/varvarka_spa/" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
-      <form class="card rv" id="lead" novalidate style="--d:.1s">
+      <form class="card rv" id="lead" novalidate style="--d:.1s"><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg>
         <h3>Перезвоним и подберём время</h3>
         <label for="f-name">Имя<input id="f-name" name="name" type="text" autocomplete="name"></label>
         <label for="f-phone">Телефон<input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7" required aria-describedby="f-msg"></label>
