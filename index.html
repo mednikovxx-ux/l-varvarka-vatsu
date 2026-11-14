@@ -298,7 +298,7 @@ main,footer.foot{position:relative;z-index:1}
 
 
 /* подвал: вода в глубине, волна сверху, блик проходит по слову */
-.fx{position:relative;overflow:visible;isolation:isolate;background:var(--cream);color:var(--ink);padding:clamp(60px,6vw,90px) 0 0;margin-top:0;display:block}
+.fx{position:relative;overflow:visible;isolation:isolate;background:var(--cream);color:var(--ink);padding:clamp(60px,6vw,90px) 0 clamp(40px,4vw,60px);margin-top:0;display:block}
 .fx .fwave2{position:absolute;left:0;width:100%;top:calc(-1 * clamp(30px,4vw,70px) + 1px);height:clamp(30px,4vw,70px);z-index:2}
 .fx .fwave2 path{fill:var(--cream)}
 .fx .fwave{position:absolute;top:-1px;left:0;width:100%;height:clamp(40px,5vw,80px);z-index:1}
@@ -342,6 +342,24 @@ main,footer.foot{position:relative;z-index:1}
 .kicker-h::after{content:"";display:block;width:200px;height:20px;margin-top:14px;background:url(img/ornament-divider.svg) no-repeat left center/contain}
 .after h2.kicker-h::after,.quote .kicker-h::after{margin-left:auto;margin-right:auto;background-position:center}
 @media (max-width:640px){.orn{width:62px;height:62px}.orn.tl{left:-14px;top:-14px}.orn.tr{right:-14px;top:-14px}.orn.bl{left:-14px;bottom:-14px}.orn.br{right:-14px;bottom:-14px}}
+
+
+/* зачем приходят: редакционный список, крупные слова и вязь между строками */
+.why-in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(40px,7vw,110px);align-items:start}
+.why-head{display:flex;flex-direction:column;gap:18px;position:sticky;top:60px}
+.why-list{list-style:none;padding:0;margin:0}
+.why-list li{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1.2fr);gap:32px;align-items:baseline;padding:34px 0;position:relative}
+.why-list li+li::before{content:"";position:absolute;top:0;left:0;right:0;height:20px;margin-top:-10px;background:url(img/ornament-divider.svg) no-repeat center/240px 20px}
+.why-list li+li{border-top:1px solid transparent}
+.why-list .w{font-family:var(--display);font-size:clamp(36px,3.6vw,54px);white-space:nowrap;line-height:1;color:var(--gold);letter-spacing:.01em}
+.why-list h3{font:600 18px/1.3 var(--text);color:var(--ink);margin-bottom:6px}
+.why-list p{color:var(--soft);max-width:38ch}
+@media (max-width:900px){.why-in{grid-template-columns:1fr}.why-head{position:static}.why-list li{grid-template-columns:1fr;gap:10px;padding:30px 0}}
+
+
+.consent{display:flex!important;flex-direction:row!important;gap:12px;align-items:flex-start;font-size:14px!important;line-height:1.45;color:var(--soft);cursor:pointer}
+.consent input{flex:none;width:20px;height:20px;min-height:0!important;margin:2px 0 0;padding:0!important;accent-color:var(--leafbtn);cursor:pointer}
+.consent a{color:var(--sea);font-weight:600}
 
 /* ---------- горизонтальная прокрутка (компьютер) ---------- */
 .h-on .hwrap{position:relative}
@@ -470,26 +488,18 @@ addEventListener('load',function(){scrollTo(0,0);});
     </div>
   </section>
 
-  <section class="panel sec after">
-    <svg class="wv t" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1440,0 L1440,30 C1260,58 1080,64 900,46 C720,28 540,10 360,22 C180,34 90,46 0,40 Z"/></svg>
-    <div class="wrap">
-      <h2 class="kicker-h rv">Зачем приходят на ватсу</h2>
-      <ul class="three">
-        <li class="rv">
-          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><circle cx="42" cy="42" r="10"/><circle cx="42" cy="42" r="22" opacity=".6"/><circle cx="42" cy="42" r="34" opacity=".3"/></svg>
-          <h3>Снять напряжение</h3><p>Когда голова не выключается, а плечи весь день у ушей.</p>
-        </li>
-        <li class="rv" style="--d:.1s">
-          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><path d="M52 20a24 24 0 1 0 14 34A20 20 0 0 1 52 20Z"/><path d="M14 66c8-5 16-5 24 0s16 5 24 0 12-4 12-4" opacity=".5"/></svg>
-          <h3>Выспаться</h3><p>После сеанса гости рассказывают, что спят спокойно и долго.</p>
-        </li>
-        <li class="rv" style="--d:.2s">
-          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><path d="M10 44c10-7 20-7 32 0s22 7 32 0"/><path d="M10 56c10-7 20-7 32 0s22 7 32 0" opacity=".55"/><path d="M42 14v18M34 24l8 8 8-8"/></svg>
-          <h3>Дать телу отдохнуть</h3><p>Вода снимает нагрузку со спины и суставов, движется мастер, а не вы.</p>
-        </li>
-      </ul>
+  <section class="panel sec why" id="why">
+    <div class="wrap why-in">
+      <div class="why-head rv">
+        <h2 class="kicker-h">Зачем приходят на ватсу</h2>
+        <p class="lead">Час в тёплой воде отвечает на три самые частые просьбы гостей.</p>
+      </div>
+      <ol class="why-list">
+        <li class="rv"><span class="w">Тишина</span><div><h3>Снять напряжение</h3><p>Когда голова не выключается, а плечи весь день у ушей.</p></div></li>
+        <li class="rv" style="--d:.08s"><span class="w">Сон</span><div><h3>Выспаться</h3><p>После сеанса гости рассказывают, что спят спокойно и долго.</p></div></li>
+        <li class="rv" style="--d:.16s"><span class="w">Лёгкость</span><div><h3>Дать телу отдохнуть</h3><p>Вода снимает нагрузку со спины и суставов. Двигается мастер, а не вы.</p></div></li>
+      </ol>
     </div>
-    <svg class="wv b" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1440,0 L1440,36 C1260,22 1080,14 900,30 C720,46 540,62 360,52 C180,42 90,30 0,34 Z"/></svg>
   </section>
 
   <section class="panel sec">
@@ -638,9 +648,10 @@ addEventListener('load',function(){scrollTo(0,0);});
         <h3>Перезвоним и подберём время</h3>
         <label for="f-name">Имя<input id="f-name" name="name" type="text" autocomplete="name"></label>
         <label for="f-phone">Телефон<input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7" required aria-describedby="f-msg"></label>
+        <label class="consent" for="f-consent"><input id="f-consent" name="consent" type="checkbox" required><span>Я согласна(-ен) на <a href="https://varvarkaspa.ru/politic-data/" target="_blank" rel="noopener">обработку персональных данных</a> в соответствии с политикой Варварки.</span></label>
         <button class="btn" type="submit">Записаться на ватсу</button>
         <p class="formmsg" id="f-msg" role="status"></p>
-        <small>Нажимая кнопку, вы соглашаетесь с <a href="https://varvarkaspa.ru/politic-data/" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</small>
+
       </form>
     </div>
   </section>
@@ -677,7 +688,6 @@ addEventListener('load',function(){scrollTo(0,0);});
     <p class="note">Имеются противопоказания. Необходима консультация специалиста.</p>
     <p>© Варварка СПА · <a href="https://varvarkaspa.ru/politic-data/" target="_blank" rel="noopener">Политика обработки данных</a> · <a href="https://varvarkaspa.ru/" target="_blank" rel="noopener">varvarkaspa.ru</a></p>
   </div>
-  <div class="fword" aria-hidden="true">ВАРВАРКА</div>
 </footer>
 </div></div>
 
@@ -780,6 +790,7 @@ addEventListener('load',function(){scrollTo(0,0);});
   /* форма: демо */
   var f=document.getElementById('lead'),msg=document.getElementById('f-msg');
   f.addEventListener('submit',function(e){e.preventDefault();var p=f.phone.value.replace(/\D/g,'');
+    if(!f.consent.checked){msg.textContent='Отметьте согласие на обработку персональных данных — без него мы не можем принять заявку.';f.consent.focus();return;}
     if(p.length<10){msg.textContent='Проверьте номер: нужно не меньше 10 цифр.';f.phone.focus();return;}
     msg.textContent='Это демо: на сайте салона заявка уйдёт администратору.';});
 })();
