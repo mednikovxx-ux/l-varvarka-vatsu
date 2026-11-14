@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ватсу в Варварке</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ватсу в Нижнем Новгороде: час в тёплом бассейне 34 °C с мастером и баня после сеанса. Первый визит −20 %. Варварка СПА, ул. Барминская, 15.">
+<meta property="og:title" content="Ватсу в Варварке — час, когда вас держит вода">
+<meta property="og:description" content="Час в тёплом бассейне 34 °C с мастером и баня после. Первый визит −20 %.">
+<meta property="og:image" content="media/hero-poster.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Montserrat:wght@400;500;600&display=swap">
+<style>
+/* Вода — главная тема: полноэкранное видео бассейна, из которого проявляется «Ватсу»; дальше светлые блоки в стиле сайта Варварки с волнистыми переходами. */
+:root{
+  --cream:#FDFFF0;   /* фон сайта Варварки */
+  --sand:#F3F1E2;
+  --mist:#E6F0EC;    /* светлая вода */
+  --aqua:#8FBDB8;
+  --sea:#24504E;     /* глубокая вода */
+  --sea2:#1B3D3C;
+  --ink:#2C2520;     /* текст сайта */
+  --soft:#5C5248;
+  --wine:#7B4945;    /* «В» из логотипа */
+  --gold:#83722F;    /* заголовки сайта */
+  --leafbtn:#646B3E; /* кнопка-лист сайта */
+  --white:#FFFFFF;
+  --display:"Academy","Cormorant Garamond",Georgia,serif;
+  --text:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --leaf:28px 0 28px 0;
+  --gl:max(20px,env(safe-area-inset-left,0px));
+  --gr:max(20px,env(safe-area-inset-right,0px));
+  --wrap:1200px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 17px/1.6 var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--wine);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Кнопки: лист, как на сайте салона */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 34px;border-radius:var(--leaf);border:0;background:var(--leafbtn);color:#fff;font:600 16px/1.2 var(--text);text-decoration:none;cursor:pointer;transition:transform .3s cubic-bezier(.2,.7,.2,1),background .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);background:#545A33}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn.wine{background:var(--wine)}.btn.wine:hover{background:#683C39}
+.btn.light{background:var(--cream);color:var(--sea2)}
+.btn.light:hover{background:#fff}
+.btn.ghost{background:transparent;color:inherit;outline:1.5px solid currentColor;outline-offset:-1.5px}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+/* Заголовки секций — как на сайте: заглавные, золотистые */
+.kicker-h{font-family:var(--display);font-weight:500;font-size:clamp(30px,3.4vw,46px);line-height:1.1;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);text-wrap:balance}
+.lead{font-size:clamp(18px,1.5vw,20px);line-height:1.6;color:var(--soft)}
+
+/* ---------- первый экран ---------- */
+.hero{position:relative;min-height:max(640px,100svh);display:grid;grid-template-rows:auto 1fr auto;color:#fff;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(ellipse 62% 50% at 50% 45%,rgba(20,54,53,.55),rgba(20,54,53,0) 74%),
+  linear-gradient(180deg,rgba(18,48,47,.38) 0%,rgba(18,48,47,0) 24%,rgba(18,48,47,0) 64%,rgba(18,48,47,.42) 100%)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px 28px;flex-wrap:wrap;padding-block:18px;padding-top:calc(18px + env(safe-area-inset-top,0px))}
+.bar .where{font-size:15px;opacity:.92}
+.bar nav{display:flex;gap:4px 26px;flex-wrap:wrap;font-size:15px}
+.bar nav a{text-decoration:none;padding:10px 0;opacity:.9;transition:opacity .2s}
+.bar nav a:hover{opacity:1;text-decoration:underline;text-underline-offset:6px}
+.bar .tel{font-weight:600;text-decoration:none;white-space:nowrap}
+.center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px;padding-block:24px}
+.hero h1{display:flex;flex-direction:column;align-items:center;gap:18px}
+.word{font-family:var(--display);font-weight:400;font-size:clamp(92px,15vw,220px);line-height:.9;letter-spacing:.02em}
+.word span{display:inline-block}
+.brand{display:flex;align-items:center;justify-content:center}
+.brand img{width:clamp(180px,18vw,240px);height:auto;filter:brightness(0) invert(1);opacity:.96}
+.hero .sub{font-size:clamp(18px,1.6vw,22px);line-height:1.5;max-width:34ch}
+.hero .acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.hero .offer{font-size:15px;opacity:.95}
+.hero .offer b{font-weight:600}
+.facts{display:flex;justify-content:center;gap:10px 44px;flex-wrap:wrap;padding-block:0 92px;font-size:15px;text-align:center}
+.facts b{display:block;font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1}
+.wave{position:absolute;left:0;width:100%;bottom:-1px;height:clamp(40px,6vw,90px);z-index:0;pointer-events:none}
+.wave path{fill:var(--cream)}
+
+/* появление «Ватсу» из воды */
+@keyframes surface{0%{opacity:0;transform:translateY(.35em) scaleY(1.12);filter:blur(14px)}60%{opacity:1;filter:blur(2px)}100%{opacity:1;transform:none;filter:blur(0)}}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.js .word span{opacity:0;animation:surface 1.6s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(.25s + var(--i)*.12s)}
+.js .brand,.js .hero .sub,.js .hero .acts,.js .facts{opacity:0;animation:fadeup 1s cubic-bezier(.2,.7,.2,1) forwards}
+.js .brand{animation-delay:1.25s}.js .hero .sub{animation-delay:1.5s}.js .hero .acts{animation-delay:1.7s}.js .facts{animation-delay:2s}
+.word.ripple{animation:wobble 2.4s ease-out}
+@keyframes wobble{0%,100%{filter:none}}
+
+/* ---------- секции ---------- */
+section{position:relative}
+.sec{padding-block:clamp(88px,10vw,150px)}
+
+/* что такое ватсу */
+.what{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.what .txt{display:flex;flex-direction:column;gap:22px}
+.statement{font-family:var(--display);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
+.what p.body{max-width:52ch;color:var(--soft)}
+.arch{position:relative;aspect-ratio:16/11;border-radius:260px 260px 28px 28px;overflow:hidden;background:var(--mist)}
+.arch video,.arch img{width:100%;height:100%;object-fit:cover}
+.arch figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;color:#fff;font-size:15px;background:linear-gradient(0deg,rgba(18,48,47,.55),rgba(18,48,47,0))}
+
+/* после сеанса */
+.after{background:var(--mist)}
+.after .wv{position:absolute;left:0;width:100%;height:clamp(36px,5vw,72px);pointer-events:none}
+.after .wv.t{top:-1px}.after .wv.b{bottom:-1px;transform:scaleY(-1)}
+.after .wv path{fill:var(--cream)}
+.after h2{margin-bottom:56px;text-align:center}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.three li{list-style:none;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center}
+.three svg{width:84px;height:84px}
+.three h3{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1;color:var(--sea)}
+.three p{color:var(--soft);max-width:30ch}
+.three ul{padding:0}
+
+/* кому */
+.who{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
+.who .txt{display:flex;flex-direction:column;gap:20px;position:sticky;top:40px}
+.rows{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.rows li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:24px;padding:28px 30px;background:var(--sand);border-radius:28px 0 28px 0}
+.rows strong{font-family:var(--display);font-weight:500;font-size:clamp(24px,2.2vw,30px);line-height:1.15;color:var(--wine)}
+.rows span{color:var(--soft)}
+
+.small-arch{max-width:420px;margin-top:16px;aspect-ratio:16/10}
+/* отзыв */
+.quote{color:#fff;overflow:hidden;isolation:isolate}
+.quote video,.quote .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.quote::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,52,51,.55)}
+.quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;padding-block:clamp(110px,13vw,190px)}
+.quote blockquote{font-family:var(--display);font-style:italic;font-size:clamp(28px,3.2vw,46px);line-height:1.2;max-width:24ch}
+.quote p{font-size:15px;opacity:.9}
+.stars{letter-spacing:.3em;font-size:18px;color:#F2DFA0}
+
+/* визит */
+.steps{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;margin-top:56px;counter-reset:s}
+.steps li{display:flex;flex-direction:column;gap:12px;position:relative;padding-top:34px}
+.steps li::before{content:"";position:absolute;top:0;left:0;width:18px;height:18px;border-radius:50%;background:var(--aqua);box-shadow:0 0 0 7px var(--mist)}
+.steps .t{font-family:var(--display);font-weight:500;font-size:34px;line-height:1;color:var(--sea)}
+.steps h3{font:600 18px/1.3 var(--text)}
+.steps p{color:var(--soft);font-size:16px}
+.bring{margin-top:48px;background:var(--sand);padding:26px 30px;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center;border-radius:var(--leaf)}
+.bring b{font-family:var(--display);font-size:26px;font-weight:500;color:var(--wine)}
+
+/* мастера */
+.masters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:56px}
+.master{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.master .ph{aspect-ratio:4/3;border-radius:160px 160px 24px 24px;background:var(--mist);display:flex;align-items:flex-end;justify-content:center;padding:18px;color:var(--sea);font-size:14px;text-align:center}
+.master h3{font-family:var(--display);font-weight:500;font-size:32px;line-height:1.1;color:var(--wine)}
+.master .role{color:var(--wine);font-weight:600;font-size:15px;margin-top:6px}
+.master p{color:var(--soft);font-size:16px;margin-top:12px}
+.cert{margin-top:40px;text-align:center;color:var(--soft)}
+.cert b{color:var(--sea)}
+
+/* цены */
+.prices{background:var(--sand)}
+.prices .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:56px;align-items:stretch}
+.first{background:var(--sea);color:#fff;padding:clamp(30px,4vw,52px);display:flex;flex-direction:column;gap:16px;border-radius:44px 0 44px 0;position:relative;overflow:hidden}
+.first .tag{font-weight:600;font-size:15px;color:#BFE0DB}
+.first h3{font-family:var(--display);font-weight:500;font-size:clamp(32px,3vw,42px);line-height:1.1}
+.first .sum{font-family:var(--display);font-size:clamp(56px,6vw,84px);line-height:1}
+.first .sum s{font-size:.38em;opacity:.7;margin-left:10px}
+.first p{opacity:.92}
+.first .btn{align-self:flex-start;margin-top:auto}
+.list{display:flex;flex-direction:column;gap:10px;font-variant-numeric:tabular-nums}
+.list .it{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:20px 26px;background:var(--cream);border-radius:22px}
+.list .it div{display:flex;flex-direction:column;gap:2px}
+.list .it strong{font-weight:600;font-size:18px}
+.list .it span{color:var(--soft);font-size:15px}
+.list .it b{font-family:var(--display);font-weight:500;font-size:30px;white-space:nowrap;color:var(--sea)}
+.day{margin-top:18px;background:var(--mist);padding:22px 26px;border-radius:var(--leaf);display:flex;flex-direction:column;gap:4px}
+.day strong{color:var(--sea);font-weight:600}
+.day .d{font-family:var(--display);font-size:28px;line-height:1.15;color:var(--wine)}
+
+/* вопросы */
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px)}
+.faq .txt{display:flex;flex-direction:column;gap:18px}
+.qs{display:flex;flex-direction:column;gap:10px}
+details{background:var(--sand);border-radius:22px;padding:0 24px}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;padding:22px 0;font-weight:600;font-size:18px;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary i{flex:none;width:30px;height:30px;border-radius:50%;background:var(--cream);position:relative;transition:transform .3s,background .3s}
+summary i::before,summary i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--sea);transform:translate(-50%,-50%)}
+summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
+details[open] summary i{background:var(--aqua)}
+details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+details p{padding:0 46px 22px 0;color:var(--soft)}
+
+/* запись */
+.book{color:#fff;overflow:hidden;isolation:isolate}
+.book video,.book .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.book::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(18,48,47,.82),rgba(18,48,47,.45))}
+.book .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:clamp(32px,6vw,96px);align-items:center;padding-block:clamp(100px,11vw,160px)}
+.book h2{font-family:var(--display);font-weight:500;font-size:clamp(40px,4.6vw,66px);line-height:1.04}
+.book .txt{display:flex;flex-direction:column;gap:22px}
+.book .bigtel{font-family:var(--display);font-size:clamp(34px,3.4vw,46px);text-decoration:none;user-select:all}
+.book .msg{display:flex;gap:12px;flex-wrap:wrap}
+.card{background:var(--cream);color:var(--ink);padding:clamp(26px,3vw,40px);border-radius:44px 0 44px 0;display:flex;flex-direction:column;gap:14px}
+.card h3{font-family:var(--display);font-weight:500;font-size:30px;line-height:1.1;color:var(--sea)}
+.card label{display:flex;flex-direction:column;gap:6px;font-size:15px;color:var(--soft)}
+.card input{font:500 17px var(--text);color:var(--ink);background:#fff;border:1.5px solid #D6D3BE;border-radius:14px;padding:15px 16px;min-height:52px}
+.card input:focus{outline:none;border-color:var(--sea);box-shadow:0 0 0 3px rgba(36,80,78,.18)}
+.card .btn{width:100%;margin-top:6px}
+.card small{font-size:13px;color:var(--soft)}
+.card small a{color:inherit}
+.formmsg{font-size:15px;color:var(--sea);min-height:1.4em}
+
+footer{padding-block:48px 120px;display:flex;flex-wrap:wrap;gap:24px 56px;align-items:center;justify-content:space-between;font-size:15px;color:var(--soft)}
+footer img{width:170px;height:auto}
+footer .note{flex-basis:100%;font-weight:600;color:var(--ink);font-size:16px}
+
+/* липкая кнопка на телефоне */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:20;display:none;gap:8px;padding:10px var(--gr) calc(10px + env(safe-area-inset-bottom,0px)) var(--gl);background:var(--cream);transform:translateY(110%);transition:transform .35s}
+.sticky.on{transform:none}
+.sticky .btn{flex:1;min-height:50px;padding:12px}
+
+/* появление блоков */
+.rv{transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.pre{opacity:0;transform:translateY(28px)}
+
+
+/* ---------- горизонтальная прокрутка (компьютер) ---------- */
+#waterline{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:15}
+.h-on .hwrap{position:relative}
+.h-on .track{position:sticky;top:0;height:100vh;display:flex;width:max-content;will-change:transform}
+.h-on main{display:contents}
+.h-on .panel{flex:none;width:100vw;height:100vh;overflow:hidden;display:flex;align-items:center}
+.h-on .panel>.wrap{width:100%}
+.h-on .sec{padding-block:64px 140px}
+.h-on .hero{min-height:100vh;display:grid;align-items:stretch}
+.h-on .hero .facts{padding-bottom:120px}
+.h-on .hero .wave,.h-on .after .wv{display:none}
+.h-on .arch{height:min(60vh,580px);width:auto;max-width:100%;margin-left:auto}
+.h-on .small-arch{height:min(30vh,280px);width:auto}
+.h-on .who .txt{position:static}
+.h-on .quote .in,.h-on .book .in{padding-block:60px 140px}
+.h-on .after h2{margin-bottom:44px}
+.h-on .steps,.h-on .masters,.h-on .prices .grid{margin-top:40px}
+.h-on .foot.panel{width:min(560px,60vw);flex-direction:column;align-items:flex-start;justify-content:center;gap:18px;padding:40px 56px 150px;margin:0}
+.h-on .foot .note{flex-basis:auto}
+.h-on .sticky{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .word span,.js .brand,.js .hero .sub,.js .hero .acts,.js .facts{animation:none;opacity:1}
+  .rv,.rv.pre{transition:none;opacity:1;transform:none}
+  .btn{transition:none}
+}
+@media (max-width:960px){
+  .bar nav{display:none}
+  .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
+  .who .txt{position:static}
+  .small-arch{display:none}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .masters{grid-template-columns:minmax(0,1fr)}
+  .arch{width:100%}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .bar .where{display:none}
+  .hero{min-height:max(600px,100svh)}
+  .facts{gap:10px 26px;padding-bottom:80px}
+  .facts b{font-size:24px}
+  .three{grid-template-columns:minmax(0,1fr);gap:30px}
+  .three li{display:grid;grid-template-columns:56px minmax(0,1fr);text-align:left;align-items:start;column-gap:18px;row-gap:4px}
+  .three li svg{grid-row:span 2;width:56px;height:56px}
+  .three h3{font-size:26px}
+  .rows li{grid-template-columns:minmax(0,1fr);gap:6px;padding:22px}
+  .steps{grid-template-columns:minmax(0,1fr)}
+  .master{grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:18px}
+  .master h3{font-size:26px}
+  details p{padding-right:0}
+  .sticky{display:flex}
+  .hero .acts .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<div class="hwrap" id="hwrap"><div class="track" id="track">
+<header class="hero panel" id="top">
+  <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg" aria-hidden="true">
+    <source src="media/hero-960.mp4" type="video/mp4" media="(max-width: 900px)">
+    <source src="media/hero-1600.mp4" type="video/mp4">
+  </video>
+  <div class="wrap bar">
+    <span class="where">Варварка СПА · Барминская, 15</span>
+    <nav aria-label="Разделы">
+      <a href="#what">О ватсу</a><a href="#visit">Визит</a><a href="#masters">Мастера</a><a href="#price">Цены</a><a href="#faq">Вопросы</a>
+    </nav>
+    <a class="tel" href="tel:88314110444">8 (831) 411-04-44</a>
+  </div>
+
+  <div class="wrap center">
+    <h1>
+      <span class="word" aria-label="Ватсу"><span style="--i:0">В</span><span style="--i:1">а</span><span style="--i:2">т</span><span style="--i:3">с</span><span style="--i:4">у</span></span>
+      <span class="brand"><img src="img/logo.png" width="240" height="103" alt="Варварка — спа и медицина"></span>
+    </h1>
+    <p class="sub">Час в тёплой воде 34 °C в руках мастера. Тело становится невесомым, голова затихает.</p>
+    <div class="acts">
+      <a class="btn light" href="#book">Записаться: первый визит −20 %</a>
+      <a class="btn ghost" href="tel:88314110444">Позвонить</a>
+    </div>
+  </div>
+
+  <dl class="wrap facts">
+    <div><dt class="sr">Вода</dt><dd><b>34 °C</b>тёплая вода</dd></div>
+    <div><dt class="sr">Сеанс</dt><dd><b>60 мин</b>в воде с мастером</dd></div>
+    <div><dt class="sr">После</dt><dd><b>15 мин</b>прогрев в бане</dd></div>
+    <div><dt class="sr">Рейтинг</dt><dd><b>4,8</b>рейтинг салона на картах</dd></div>
+  </dl>
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0,58 C180,20 360,20 540,46 C720,72 900,84 1080,60 C1260,36 1350,30 1440,40 L1440,90 L0,90 Z"/></svg>
+</header>
+
+<main>
+  <section class="panel sec" id="what">
+    <div class="wrap what">
+      <div class="txt rv">
+        <h2 class="kicker-h">Что такое ватсу</h2>
+        <p class="statement">Вы лежите на тёплой воде, мастер держит вас и мягко ведёт. От вас не нужно ничего.</p>
+        <p class="body">Ватсу — это шиацу, перенесённый в воду: water и shiatsu. Мастер поддерживает голову и тело, плавно вытягивает, покачивает и разминает. В воде тело почти ничего не весит, поэтому спина и суставы отдыхают так, как не получается на массажном столе.</p>
+        <p><a class="btn" href="#book">Записаться на первый сеанс</a></p>
+      </div>
+      <figure class="arch rv" style="--d:.12s">
+        <video data-lazy autoplay muted loop playsinline preload="none" poster="media/pool-poster.jpg" aria-hidden="true"><source data-src="media/pool-1280.mp4" type="video/mp4"></video>
+        <figcaption>Бассейн 34 °C, глубина 1,7 м. Стоять не нужно: вас держит мастер.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="panel sec after">
+    <svg class="wv t" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1440,0 L1440,30 C1260,58 1080,64 900,46 C720,28 540,10 360,22 C180,34 90,46 0,40 Z"/></svg>
+    <div class="wrap">
+      <h2 class="kicker-h rv">Зачем приходят на ватсу</h2>
+      <ul class="three">
+        <li class="rv">
+          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><circle cx="42" cy="42" r="10"/><circle cx="42" cy="42" r="22" opacity=".6"/><circle cx="42" cy="42" r="34" opacity=".3"/></svg>
+          <h3>Снять напряжение</h3><p>Когда голова не выключается, а плечи весь день у ушей.</p>
+        </li>
+        <li class="rv" style="--d:.1s">
+          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><path d="M52 20a24 24 0 1 0 14 34A20 20 0 0 1 52 20Z"/><path d="M14 66c8-5 16-5 24 0s16 5 24 0 12-4 12-4" opacity=".5"/></svg>
+          <h3>Выспаться</h3><p>После сеанса гости рассказывают, что спят спокойно и долго.</p>
+        </li>
+        <li class="rv" style="--d:.2s">
+          <svg viewBox="0 0 84 84" aria-hidden="true" fill="none" stroke="#24504E" stroke-width="1.6"><path d="M10 44c10-7 20-7 32 0s22 7 32 0"/><path d="M10 56c10-7 20-7 32 0s22 7 32 0" opacity=".55"/><path d="M42 14v18M34 24l8 8 8-8"/></svg>
+          <h3>Дать телу отдохнуть</h3><p>Вода снимает нагрузку со спины и суставов, движется мастер, а не вы.</p>
+        </li>
+      </ul>
+    </div>
+    <svg class="wv b" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,0 L1440,0 L1440,36 C1260,22 1080,14 900,30 C720,46 540,62 360,52 C180,42 90,30 0,34 Z"/></svg>
+  </section>
+
+  <section class="panel sec">
+    <div class="wrap who">
+      <div class="txt rv">
+        <h2 class="kicker-h">Кому подходит</h2>
+        <p class="lead">Сеанс всегда индивидуальный: только вы, мастер и вода.</p>
+        <figure class="arch small-arch"><img src="media/hero-poster.jpg" width="1600" height="1000" alt="Тёплая вода бассейна с мягкими кругами" loading="lazy"></figure>
+      </div>
+      <ul class="rows">
+        <li class="rv"><strong>Тем, кто устал</strong><span>Много работы, стресс, плохой сон. Для этого к нам приходят чаще всего.</span></li>
+        <li class="rv"><strong>Будущим мамам</strong><span>Вода забирает вес и разгружает спину. Мастер заранее спросит о сроке и самочувствии.</span></li>
+        <li class="rv"><strong>Детям и подросткам</strong><span>В том числе гиперактивным и детям с ДЦП. Цена для детей та же, что для взрослых.</span></li>
+        <li class="rv"><strong>Тем, кто не умеет плавать</strong><span>Плавать не нужно: мастер держит вас весь сеанс, лицо остаётся над водой.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel quote">
+    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/hero-poster.jpg" aria-hidden="true"><source data-src="media/hero-960.mp4" type="video/mp4"></video>
+    <div class="wrap in rv">
+      <blockquote>«Просто волшебство какое-то! Не помню, когда спала так в последний раз: 8 часов подряд»</blockquote>
+      <p>Гостья после сеанса ватсу · отзыв на Яндекс Картах</p>
+    </div>
+  </section>
+
+  <section class="panel sec" id="visit">
+    <div class="wrap">
+      <h2 class="kicker-h rv">Как проходит визит</h2>
+      <ol class="steps">
+        <li class="rv"><span class="t">до сеанса</span><h3>Знакомство</h3><p>Мастер спросит о самочувствии и о том, что для вас комфортно.</p></li>
+        <li class="rv" style="--d:.08s"><span class="t">60 мин</span><h3>Сеанс в воде</h3><p>Вы лежите на спине в тёплой воде, мастер держит и ведёт вас.</p></li>
+        <li class="rv" style="--d:.16s"><span class="t">15 мин</span><h3>Баня</h3><p>Мягкий прогрев после бассейна.</p></li>
+        <li class="rv" style="--d:.24s"><span class="t">без спешки</span><h3>Чай и отдых</h3><p>Зона отдыха, халат и чай уже входят в визит.</p></li>
+      </ol>
+      <p class="bring rv"><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
+    </div>
+  </section>
+
+  <section class="panel sec" id="masters" style="padding-top:0">
+    <div class="wrap">
+      <h2 class="kicker-h rv">Вас держат надёжные руки</h2>
+      <div class="masters">
+        <article class="master rv">
+          <div class="ph">Фото мастера</div>
+          <div><h3>Галина Гордеева</h3><p class="role">Стаж больше 10 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
+        </article>
+        <article class="master rv" style="--d:.1s">
+          <div class="ph">Фото мастера</div>
+          <div><h3>Елена Калинкина</h3><p class="role">Стаж 4–5 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
+        </article>
+      </div>
+      <p class="cert rv">Мастер прошёл обучение и имеет сертификат <b>Watsu Practitioner</b>.</p>
+    </div>
+  </section>
+
+  <section class="panel sec prices" id="price">
+    <div class="wrap">
+      <h2 class="kicker-h rv">Стоимость</h2>
+      <div class="grid">
+        <div class="first rv">
+          <h3>Первый визит: знакомство с ватсу</h3>
+          <p class="sum">3 600 ₽<s>4 500 ₽</s></p>
+          <p>Час в воде с мастером, 15 минут бани, чай и отдых. Для взрослых и детей одна цена.</p>
+          <a class="btn light" href="#book">Записаться со скидкой 20 %</a>
+        </div>
+        <div class="rv" style="--d:.1s">
+          <div class="list">
+            <div class="it"><div><strong>Разовый сеанс</strong><span>Час в воде, баня, чай</span></div><b>4 500 ₽</b></div>
+            <div class="it"><div><strong>Курс из 6 сеансов</strong><span>Платите за пять, шестой в подарок</span></div><b>22 500 ₽</b></div>
+            <div class="it"><div><strong>Подарочный сертификат</strong><span>На сеанс ватсу или на любую сумму</span></div><b>от 4 500 ₽</b></div>
+          </div>
+          <div class="day" aria-live="polite">
+            <strong>День ватсу: последнее воскресенье месяца, −50&nbsp;%, 2&nbsp;250&nbsp;₽</strong>
+            <span class="d" id="sunday">Ближайший в последнее воскресенье месяца</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel sec" id="faq">
+    <div class="wrap faq">
+      <div class="txt rv">
+        <h2 class="kicker-h">Вопросы</h2>
+        <p class="lead">Не нашли ответ? Позвоните, администратор ответит сразу.</p>
+        <p><a class="btn" href="tel:88314110444">8 (831) 411-04-44</a></p>
+      </div>
+      <div class="rv qs" style="--d:.1s">
+        <details open><summary>Я не умею плавать. Мне можно?<i aria-hidden="true"></i></summary><p>Да. Мастер держит вас весь сеанс, лицо остаётся над водой. Глубина 1,7 м, но стоять и плыть не нужно.</p></details>
+        <details><summary>Что взять с собой?<i aria-hidden="true"></i></summary><p>Только купальник. Халат, полотенце, душ и чай есть в салоне.</p></details>
+        <details><summary>Можно ли беременным и детям?<i aria-hidden="true"></i></summary><p>Да, сеанс проходит индивидуально. Мастер заранее расспросит о сроке беременности или о самочувствии ребёнка.</p></details>
+        <details><summary>Сколько длится визит?<i aria-hidden="true"></i></summary><p>Час в воде с мастером и 15 минут бани. Потом чай и отдых, без спешки.</p></details>
+        <details><summary>Как записаться быстрее всего?<i aria-hidden="true"></i></summary><p>По телефону: администратор отвечает сразу и подберёт время. В мессенджерах отвечаем за 10–15 минут.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel book" id="book">
+    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/pool-poster.jpg" aria-hidden="true"><source data-src="media/pool-1280.mp4" type="video/mp4"></video>
+    <div class="wrap in">
+      <div class="txt rv">
+        <h2>Выберите свой час в воде</h2>
+        <p>Нижний Новгород, ул. Барминская, 15<br>Ежедневно с 10:00 до 22:00</p>
+        <a class="bigtel" href="tel:88314110444">8 (831) 411-04-44</a>
+        <div class="msg">
+          <a class="btn ghost" href="https://wa.me/79047837810" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost" href="https://t.me/varvarka_spa/" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <form class="card rv" id="lead" novalidate style="--d:.1s">
+        <h3>Перезвоним и подберём время</h3>
+        <label for="f-name">Имя<input id="f-name" name="name" type="text" autocomplete="name"></label>
+        <label for="f-phone">Телефон<input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7" required aria-describedby="f-msg"></label>
+        <button class="btn" type="submit">Записаться на ватсу</button>
+        <p class="formmsg" id="f-msg" role="status"></p>
+        <small>Нажимая кнопку, вы соглашаетесь с <a href="https://varvarkaspa.ru/politic-data/" target="_blank" rel="noopener">политикой обработки персональных данных</a>.</small>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap panel foot">
+  <img src="img/logo.png" width="170" height="73" alt="Варварка — спа и медицина" loading="lazy">
+  <span>ул. Барминская, 15 · ежедневно 10:00–22:00</span>
+  <a href="tel:88314110444">8 (831) 411-04-44</a>
+  <p class="note">Имеются противопоказания. Необходима консультация специалиста.</p>
+</footer>
+</div></div>
+<canvas id="waterline" aria-hidden="true"></canvas>
+
+<div class="sticky" id="sticky">
+  <a class="btn" href="tel:88314110444">Позвонить</a>
+  <a class="btn wine" href="#book">Записаться</a>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;root.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* День ватсу: ближайшее последнее воскресенье */
+  var M=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+  function lastSun(y,m){var d=new Date(y,m+1,0);d.setDate(d.getDate()-d.getDay());return d;}
+  var d0=new Date(),t=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()),ls=lastSun(t.getFullYear(),t.getMonth());
+  if(ls<t)ls=lastSun(t.getFullYear(),t.getMonth()+1);
+  var n=Math.round((ls-t)/864e5),w=n===0?'сегодня':n===1?'завтра':'через '+n+' '+((n%10===1&&n%100!==11)?'день':(n%10>=2&&n%10<=4&&(n%100<10||n%100>=20))?'дня':'дней');
+  document.getElementById('sunday').textContent='Ближайший: '+ls.getDate()+' '+M[ls.getMonth()]+', '+w;
+
+  /* видео ниже первого экрана грузим, когда до них доскроллили */
+  var lazy=document.querySelectorAll('video[data-lazy]');
+  function load(v){v.querySelectorAll('source[data-src]').forEach(function(s){s.src=s.dataset.src;s.removeAttribute('data-src');});v.load();if(!reduce){var p=v.play();if(p&&p.catch)p.catch(function(){});}}
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);vio.unobserve(e.target);}});},{rootMargin:'300px 0px'});
+    lazy.forEach(function(v){vio.observe(v);});
+  }else lazy.forEach(load);
+  if(reduce){document.querySelectorAll('video').forEach(function(v){v.removeAttribute('autoplay');v.pause();});}
+
+  /* мягкое появление блоков ниже первого экрана */
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('pre');io.unobserve(e.target);}});},{rootMargin:'0px 0px -10% 0px'});
+    document.querySelectorAll('.rv').forEach(function(el){if(el.getBoundingClientRect().top>innerHeight*.9){el.classList.add('pre');io.observe(el);}});
+  }
+
+  /* липкая кнопка на телефоне после первого экрана */
+  var st=document.getElementById('sticky');
+  addEventListener('scroll',function(){st.classList.toggle('on',scrollY>innerHeight*.8);},{passive:true});
+
+
+  /* ---------- горизонтальная прокрутка и вода, которая сопровождает гостя ---------- */
+  var hw=document.getElementById('hwrap'),tr=document.getElementById('track'),panels=[].slice.call(document.querySelectorAll('.panel'));
+  var H=false,maxX=0;
+  function horiz(){return false;} /* прокрутка всегда вертикальная */
+  function layout(){
+    H=horiz();root.classList.toggle('h-on',H);
+    if(H){maxX=Math.max(0,tr.scrollWidth-innerWidth);hw.style.height=(maxX+innerHeight)+'px';}
+    else{hw.style.height='';tr.style.transform='';}
+    move();
+  }
+  function px(){return H?Math.min(maxX,Math.max(0,scrollY-hw.offsetTop)):0;}
+  function move(){if(H)tr.style.transform='translate3d('+(-px())+'px,0,0)';}
+  addEventListener('scroll',move,{passive:true});
+  addEventListener('resize',layout);
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){
+    var id=a.getAttribute('href').slice(1),el=id&&document.getElementById(id);if(!el||!H)return;
+    var pnl=el.closest('.panel')||el;e.preventDefault();
+    scrollTo({top:hw.offsetTop+Math.min(maxX,pnl.offsetLeft),behavior:reduce?'auto':'smooth'});});});
+  layout();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+  addEventListener('load',layout);
+
+  var cv=document.getElementById('waterline'),cx=cv.getContext('2d'),dpr=1,W=0,Hh=0;
+  function size(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;Hh=innerHeight;cv.width=W*dpr;cv.height=Hh*dpr;cx.setTransform(dpr,0,0,dpr,0,0);}
+  size();addEventListener('resize',size);
+  var ripples=[],lastIdx=-1,lastS=scrollY,vel=0,hop=0,t0=performance.now();
+  function prog(){if(H)return maxX?px()/maxX:0;var m=document.documentElement.scrollHeight-innerHeight;return m>0?scrollY/m:0;}
+  function idx(){var c=H?px()+innerWidth*.5:scrollY+innerHeight*.5,k=0;panels.forEach(function(p,i){var o=H?p.offsetLeft:p.getBoundingClientRect().top+scrollY;if(o<=c)k=i;});return k;}
+  function surf(x,t,amp,ph){return Math.sin(x*.012+t*.9+ph)*amp+Math.sin(x*.027-t*1.3+ph*1.7)*amp*.45;}
+  function draw(){
+    var t=(performance.now()-t0)/1000;cx.clearRect(0,0,W,Hh);
+    var d=scrollY-lastS;lastS=scrollY;vel=vel*.9+Math.abs(d)*.1;
+    var p=prog(),flow=(H?px():scrollY)*.006,amp=5+Math.min(vel*.25,12);
+    var i=idx();if(i!==lastIdx){if(lastIdx>=0){ripples.push({t:t,s:1});hop=1;}lastIdx=i;}
+    hop*=.93;
+    if(H){
+      var base=Hh-54,x,y;
+      /* два слоя воды */
+      [[.42,'rgba(143,189,184,0.38)',0],[.62,'rgba(36,80,78,0.30)',2.1]].forEach(function(L,k){
+        cx.beginPath();cx.moveTo(0,Hh);
+        for(x=0;x<=W+8;x+=8){y=base+k*10+surf(x,t+flow,amp*(1-k*.3),L[2]);cx.lineTo(x,y);}
+        cx.lineTo(W,Hh);cx.closePath();cx.fillStyle=L[1];cx.fill();});
+      cx.beginPath();for(x=0;x<=W+8;x+=8){y=base+surf(x,t+flow,amp,0);x?cx.lineTo(x,y):cx.moveTo(x,y);}
+      cx.strokeStyle='rgba(253,255,240,0.85)';cx.lineWidth=1.5;cx.stroke();
+      var dx=40+p*(W-80),sy=base+surf(dx,t+flow,amp,0);
+      ripples.forEach(function(r){var a=t-r.t;if(a>2.6)return;for(var k=0;k<3;k++){var rr=(a-k*.25)*70;if(rr<=0)continue;cx.beginPath();cx.ellipse(r.x||dx,sy+2,rr,rr*.22,0,0,7);cx.strokeStyle='rgba(253,255,240,'+(Math.max(0,.75-a*.3)*(1-k*.25))+')';cx.lineWidth=1.4;cx.stroke();}if(!r.x)r.x=dx;});
+      drop(dx,sy-14-Math.sin(Math.min(1,hop)*Math.PI)*26-Math.sin(t*2)*2,11);
+    }else{
+      var gut=W<640?9:Math.max(18,Math.min(70,(W-1200)/4+18)),rx=W-gut,top=70,bot=Hh-(W<640?96:40),dy=top+p*(bot-top),yy;
+      var wob=function(y){return Math.sin(y*.018+t*1.1+flow)*(3+amp*.35)+Math.sin(y*.041-t*.7)*1.6;};
+      cx.beginPath();for(yy=top;yy<=bot;yy+=6){var xx=rx+wob(yy);yy===top?cx.moveTo(xx,yy):cx.lineTo(xx,yy);}
+      cx.strokeStyle='rgba(143,189,184,'+(W<640?.3:.55)+')';cx.lineWidth=W<640?1.4:2;cx.stroke();
+      cx.beginPath();for(yy=top;yy<=dy;yy+=6){var x2=rx+wob(yy);yy===top?cx.moveTo(x2,yy):cx.lineTo(x2,yy);}
+      cx.strokeStyle='rgba(36,80,78,0.55)';cx.lineWidth=2.4;cx.stroke();
+      var dxx=rx+wob(dy);
+      ripples.forEach(function(r){var a2=t-r.t;if(a2>2.4)return;if(r.y==null)r.y=dy;for(var k=0;k<3;k++){var rr=(a2-k*.22)*(W<640?16:34);if(rr<=0)continue;cx.beginPath();cx.ellipse(rx+wob(r.y),r.y,rr,rr*.55,0,0,7);cx.strokeStyle='rgba(36,80,78,'+(Math.max(0,.5-a2*.2)*(1-k*.25))+')';cx.lineWidth=1.3;cx.stroke();}});
+      drop(dxx,dy-Math.sin(Math.min(1,hop)*Math.PI)*10+Math.sin(t*2)*1.5,W<640?5:9);
+    }
+    ripples=ripples.filter(function(r){return t-r.t<3;});
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  function drop(x,y,r){
+    cx.save();cx.translate(x,y);
+    cx.beginPath();cx.moveTo(0,-r*1.9);cx.bezierCurveTo(r*.9,-r*.6,r,r*.1,r,r*.35);cx.arc(0,r*.35,r,0,Math.PI,false);cx.bezierCurveTo(-r,r*.1,-r*.9,-r*.6,0,-r*1.9);
+    cx.fillStyle='#24504E';cx.fill();
+    cx.beginPath();cx.ellipse(-r*.35,r*.05,r*.22,r*.4,-.4,0,7);cx.fillStyle='rgba(253,255,240,.85)';cx.fill();
+    cx.restore();
+  }
+  draw();
+
+  /* форма: демо */
+  var f=document.getElementById('lead'),msg=document.getElementById('f-msg');
+  f.addEventListener('submit',function(e){e.preventDefault();var p=f.phone.value.replace(/\D/g,'');
+    if(p.length<10){msg.textContent='Проверьте номер: нужно не меньше 10 цифр.';f.phone.focus();return;}
+    msg.textContent='Это демо: на сайте салона заявка уйдёт администратору.';});
+})();
+</script>
+</body>
+</html>
