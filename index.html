@@ -149,10 +149,16 @@ section{position:relative}
 .quote{color:#fff;overflow:hidden;isolation:isolate}
 .quote video,.quote .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
 .quote::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,52,51,.55)}
-.quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(90px,10vw,140px) 40px}
+.quote{min-height:max(720px,100vh);display:flex;flex-direction:column;justify-content:center}
+.quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(150px,14vw,210px) 40px;position:relative;z-index:1}
 .kicker-h.light{color:#E9DFA9}
 .quote::before{background:linear-gradient(180deg,rgba(18,48,47,.66),rgba(18,48,47,.8))!important}
-.rrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;padding-block:24px 40px}
+.rcorners{position:absolute;inset:0;pointer-events:none}
+.rc-left,.rc-right{position:absolute;width:min(330px,28vw);pointer-events:auto}
+.rc-left{left:max(20px,calc((100vw - 1200px)/2 + 20px));top:clamp(48px,6vw,80px)}
+.rc-right{right:max(20px,calc((100vw - 1200px)/2 + 20px));bottom:clamp(48px,6vw,80px);text-align:right;align-items:flex-end}
+.rc-left .rtext,.rc-right .rtext{font-size:17px}
+.rc-right .rwho{justify-content:flex-end}
 .rcard{display:flex;flex-direction:column;gap:10px;color:#F4F3E3;text-decoration:none;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
 .rcard:hover{transform:translateY(-4px)}
 .rcard:hover .rsrc{color:#fff}
@@ -163,7 +169,7 @@ section{position:relative}
 .rwho{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:14px;color:#C9D6CF}
 .rwho b{color:#F4F3E3;font-weight:600;font-size:15px}
 .rsrc{font-size:13px;font-weight:600;color:#BFE0DB;text-decoration:underline;text-underline-offset:4px;transition:color .2s}
-.srcs-wrap{padding-bottom:clamp(70px,8vw,110px)}
+.srcs-wrap{padding-bottom:clamp(170px,14vw,220px);position:relative;z-index:1}
 .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.2vw,46px);line-height:1.2;max-width:24ch}
 .quote p{font-size:15px;opacity:.9}
 .stars{letter-spacing:.3em;font-size:18px;color:#F2DFA0}
@@ -314,8 +320,8 @@ main,footer.foot{position:relative;z-index:1}
 .fword{font-family:var(--display);font-size:clamp(70px,16vw,260px);line-height:.8;letter-spacing:.06em;text-align:center;margin-top:30px;white-space:nowrap;
   color:transparent;background:linear-gradient(100deg,rgba(233,223,169,.14) 0%,rgba(233,223,169,.14) 40%,rgba(255,250,215,.55) 50%,rgba(233,223,169,.14) 60%,rgba(233,223,169,.14) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 7s ease-in-out infinite;user-select:none;transform:translateY(12%)}
 @keyframes shine{0%{background-position:120% 0}100%{background-position:-20% 0}}
-@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}.rrow{grid-template-columns:1fr 1fr}}
-@media (max-width:640px){.rrow{grid-template-columns:1fr;gap:34px}}
+@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){.rcorners{position:static;display:flex;flex-direction:column;gap:30px;padding:0 20px 20px}.rc-left,.rc-right{position:static;width:auto;text-align:left;align-items:flex-start}.rc-right .rwho{justify-content:flex-start}.quote .in{padding-top:90px}.srcs-wrap{padding-bottom:80px}}
 @media (max-width:640px){.fgrid{grid-template-columns:1fr;gap:32px}.fx{padding-bottom:70px}.fword{margin-top:20px}}
 @media (prefers-reduced-motion:reduce){.fword{animation:none}}
 
@@ -493,41 +499,17 @@ addEventListener('load',function(){scrollTo(0,0);});
       <blockquote class="rv">«Просто волшебство какое-то! Не помню, когда спала так в последний раз: 8 часов подряд»</blockquote>
       <p class="rv">Гостья после сеанса ватсу</p>
     </div>
-    <div class="wrap rrow" aria-label="Отзывы с Яндекс Карт">
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+    <div class="rcorners" aria-label="Отзывы с Яндекс Карт">
+        <a class="rcard rc-left" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
           <span class="rstars" aria-label="Оценка 5 из 5">5,0</span><span class="rtag">про ватсу</span>
           <span class="rtext">«Посетила сеанс Ватсу! Елена Калинкина просто волшебница! Всем советую попробовать данное направление, тело в теплом бассейне расслабляется, а плавные движения в воде погружают как будто в транс.»</span>
           <span class="rwho"><b>Алексей Л.</b>8 августа 2026</span>
           <span class="rsrc">Яндекс Карты →</span>
         </a>
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
-          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
-          <span class="rtext">«Я нашла место, где можно отдохнуть и душой и телом! Изумительное место, очень хороший и отзывчивый персонал. Гармонично, эстетично, уютно, комфортно, чисто, атмосферно… Советую!»</span>
-          <span class="rwho"><b>Zhanna Borisova</b>22 октября 2025</span>
-          <span class="rsrc">Яндекс Карты →</span>
-        </a>
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
+        <a class="rcard rc-right" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
           <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
           <span class="rtext">«Прекрасное место, где можно отдохнуть семьей, провести время с пользой для здоровья. Чистый, тёплый бассейн, прекрасная баня, отличные мастера.»</span>
           <span class="rwho"><b>marina u.</b>25 октября 2025</span>
-          <span class="rsrc">Яндекс Карты →</span>
-        </a>
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
-          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
-          <span class="rtext">«Рад, что в городе открылось такое СПА! Место классное. Есть парковка, это очень удобно. Внутри баня, бассейн. Массажные кабинеты очень комфортные.»</span>
-          <span class="rwho"><b>Арсений Куприянов</b>21 октября 2025</span>
-          <span class="rsrc">Яндекс Карты →</span>
-        </a>
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
-          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
-          <span class="rtext">«Душевное место! Приветливый персонал, мастера высшего уровня! Посещала спа-программу, в полном восторге! Место, куда хочется возвращаться.»</span>
-          <span class="rwho"><b>Кристина Г.</b>1 ноября 2025</span>
-          <span class="rsrc">Яндекс Карты →</span>
-        </a>
-        <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
-          <span class="rstars" aria-label="Оценка 5 из 5">5,0</span>
-          <span class="rtext">«Очень люблю эту сеть спа салонов, решила в том числе посетить и этот филиал. Эмоции чисто положительные, везде опрятно, гигиенично. Вежливые мастера.»</span>
-          <span class="rwho"><b>Анна Л.</b>22 октября 2025</span>
           <span class="rsrc">Яндекс Карты →</span>
         </a>
     </div>
