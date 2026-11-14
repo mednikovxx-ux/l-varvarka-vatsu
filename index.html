@@ -314,6 +314,12 @@ main,footer.foot{position:relative;z-index:1}
   .hero .acts .btn{flex:1 1 100%}
 }
 </style>
+<script>
+/* сайт всегда открывается с главного экрана: убираем #якорь из адреса и не даём браузеру вспоминать прокрутку */
+try{if('scrollRestoration' in history)history.scrollRestoration='manual';
+if(location.hash){history.replaceState(null,'',location.pathname+location.search);}}catch(e){}
+addEventListener('load',function(){scrollTo(0,0);});
+</script>
 </head>
 <body>
 <div class="hwrap" id="hwrap"><div class="track" id="track">
