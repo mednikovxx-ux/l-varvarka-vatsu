@@ -105,10 +105,10 @@ section{position:relative}
 .what .txt{grid-column:1}
 /* видео сеанса: справа, приближено, растворяется в молочный фон к тексту (зеркально блоку «Кому подходит») */
 .what-sec{overflow:hidden}
-.what-media{position:absolute;top:50%;right:max(0px,calc((100vw - 1200px)/2 - 40px));height:min(86%,760px);aspect-ratio:464/848;transform:translateY(-50%);pointer-events:none;overflow:hidden;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 10%,#000 86%,transparent 100%);-webkit-mask-composite:source-in;
-  mask-image:linear-gradient(90deg,transparent 0%,#000 22%,#000 92%,transparent 100%),linear-gradient(180deg,transparent 0%,#000 10%,#000 86%,transparent 100%);mask-composite:intersect}
-.what-media video{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:saturate(.8) sepia(.1) brightness(1.04)}
+.what-media{position:absolute;top:50%;right:0;width:min(62vw,960px);aspect-ratio:832/480;transform:translateY(-50%);pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);-webkit-mask-composite:source-in;
+  mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
+.what-media video{width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.8) sepia(.1) brightness(1.04)}
 .what-media::after{content:none}
 .what .txt{display:flex;flex-direction:column;gap:22px}
 .statement{font-family:var(--serif);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
@@ -358,7 +358,7 @@ main,footer.foot{position:relative;z-index:1}
   .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
   .who .txt{position:static}
   .what{min-height:0}
-  .what-media{position:relative;top:auto;right:auto;transform:none;aspect-ratio:464/848;width:min(100%,420px);height:auto;margin:0 auto;
+  .what-media{position:relative;top:auto;right:auto;transform:none;aspect-ratio:832/480;width:100%;height:auto;margin:0;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
   .what-media::after{background:none}
 
@@ -448,7 +448,7 @@ addEventListener('load',function(){scrollTo(0,0);});
       </div>
     </div>
     <div class="what-media" role="img" aria-label="Сеанс ватсу: мастер ведёт гостью по воде">
-      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/procedure.jpg" aria-hidden="true"><source data-src="media/procedure.mp4" type="video/mp4"></video>
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/procedure-wide.jpg" aria-hidden="true"><source data-src="media/procedure-wide.mp4" type="video/mp4"></video>
     </div>
   </section>
 
