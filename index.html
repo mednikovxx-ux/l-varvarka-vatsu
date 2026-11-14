@@ -151,17 +151,18 @@ section{position:relative}
 .quote::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(20,52,51,.55)}
 .quote .in{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding-block:clamp(90px,10vw,140px) 40px}
 .kicker-h.light{color:#E9DFA9}
-.quote::before{background:linear-gradient(180deg,rgba(18,48,47,.62),rgba(18,48,47,.78))!important}
-.rrow{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px max(20px,calc((100vw - 1200px)/2 + 20px)) 26px;scrollbar-width:thin;scrollbar-color:rgba(253,255,240,.4) transparent}
-.rcard{flex:0 0 clamp(270px,26vw,340px);scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;padding:26px;background:rgba(253,255,240,.94);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s}
-.rcard:hover{transform:translateY(-6px);background:#fff}
-.rstars{font-weight:600;color:var(--wine);font-size:15px}
-.rstars::before{content:"★★★★★ ";color:#C9A23A;letter-spacing:.1em}
-.rtag{align-self:flex-start;font-size:13px;font-weight:600;color:var(--sea);background:var(--mist);padding:3px 10px}
-.rtext{font-family:var(--serif);font-size:19px;line-height:1.35;flex:1}
-.rwho{display:flex;flex-direction:column;font-size:14px;color:var(--soft)}
-.rwho b{color:var(--ink);font-weight:600;font-size:15px}
-.rsrc{font-size:14px;font-weight:600;color:var(--sea)}
+.quote::before{background:linear-gradient(180deg,rgba(18,48,47,.66),rgba(18,48,47,.8))!important}
+.rrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 56px;padding-block:24px 40px}
+.rcard{display:flex;flex-direction:column;gap:10px;color:#F4F3E3;text-decoration:none;transition:opacity .3s,transform .4s cubic-bezier(.2,.7,.2,1)}
+.rcard:hover{transform:translateY(-4px)}
+.rcard:hover .rsrc{color:#fff}
+.rstars{font-size:14px;color:#E9DFA9;font-weight:600}
+.rstars::before{content:"★★★★★ ";color:#E2C46A;letter-spacing:.12em}
+.rtag{align-self:flex-start;font-size:13px;font-weight:600;color:#E9DFA9;letter-spacing:.06em;text-transform:uppercase}
+.rtext{font-family:var(--serif);font-style:italic;font-size:clamp(18px,1.45vw,21px);line-height:1.4;color:#FDFFF0}
+.rwho{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font-size:14px;color:#C9D6CF}
+.rwho b{color:#F4F3E3;font-weight:600;font-size:15px}
+.rsrc{font-size:13px;font-weight:600;color:#BFE0DB;text-decoration:underline;text-underline-offset:4px;transition:color .2s}
 .srcs-wrap{padding-bottom:clamp(70px,8vw,110px)}
 .quote blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(28px,3.2vw,46px);line-height:1.2;max-width:24ch}
 .quote p{font-size:15px;opacity:.9}
@@ -313,7 +314,8 @@ main,footer.foot{position:relative;z-index:1}
 .fword{font-family:var(--display);font-size:clamp(70px,16vw,260px);line-height:.8;letter-spacing:.06em;text-align:center;margin-top:30px;white-space:nowrap;
   color:transparent;background:linear-gradient(100deg,rgba(233,223,169,.14) 0%,rgba(233,223,169,.14) 40%,rgba(255,250,215,.55) 50%,rgba(233,223,169,.14) 60%,rgba(233,223,169,.14) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 7s ease-in-out infinite;user-select:none;transform:translateY(12%)}
 @keyframes shine{0%{background-position:120% 0}100%{background-position:-20% 0}}
-@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
+@media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}.rrow{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.rrow{grid-template-columns:1fr;gap:34px}}
 @media (max-width:640px){.fgrid{grid-template-columns:1fr;gap:32px}.fx{padding-bottom:70px}.fword{margin-top:20px}}
 @media (prefers-reduced-motion:reduce){.fword{animation:none}}
 
@@ -485,13 +487,13 @@ addEventListener('load',function(){scrollTo(0,0);});
   </section>
 
   <section class="panel quote" id="reviews">
-    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-face.jpg?v=2" aria-hidden="true"><source data-src="media/session-face.mp4?v=2" type="video/mp4"></video>
+    <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-wide.jpg" aria-hidden="true"><source data-src="media/session-wide.mp4" type="video/mp4"></video>
     <div class="wrap in">
       <h2 class="kicker-h light rv">Отзывы гостей</h2>
       <blockquote class="rv">«Просто волшебство какое-то! Не помню, когда спала так в последний раз: 8 часов подряд»</blockquote>
       <p class="rv">Гостья после сеанса ватсу</p>
     </div>
-    <div class="rrow" aria-label="Отзывы с Яндекс Карт">
+    <div class="wrap rrow" aria-label="Отзывы с Яндекс Карт">
         <a class="rcard" href="https://yandex.ru/maps/org/varvarka/209418957768/reviews/" target="_blank" rel="noopener">
           <span class="rstars" aria-label="Оценка 5 из 5">5,0</span><span class="rtag">про ватсу</span>
           <span class="rtext">«Посетила сеанс Ватсу! Елена Калинкина просто волшебница! Всем советую попробовать данное направление, тело в теплом бассейне расслабляется, а плавные движения в воде погружают как будто в транс.»</span>
