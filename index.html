@@ -298,27 +298,29 @@ main,footer.foot{position:relative;z-index:1}
 
 
 /* подвал: вода в глубине, волна сверху, блик проходит по слову */
-.fx{position:relative;overflow:hidden;isolation:isolate;background:var(--sea2);color:#E8EEE6;padding:clamp(70px,7vw,100px) 0 0;border-top:1px solid rgba(233,223,169,.18);margin-top:0;display:block}
+.fx{position:relative;overflow:visible;isolation:isolate;background:var(--cream);color:var(--ink);padding:clamp(60px,6vw,90px) 0 0;margin-top:0;display:block}
+.fx .fwave2{position:absolute;left:0;width:100%;top:calc(-1 * clamp(30px,4vw,70px) + 1px);height:clamp(30px,4vw,70px);z-index:2}
+.fx .fwave2 path{fill:var(--cream)}
 .fx .fwave{position:absolute;top:-1px;left:0;width:100%;height:clamp(40px,5vw,80px);z-index:1}
 .fx .fwave path{fill:var(--cream)}
 .fx .fbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;z-index:-1;mix-blend-mode:screen}
 .fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;position:relative;z-index:1}
-.fbrand img{width:200px;height:auto;filter:brightness(0) invert(1);opacity:.95}
-.fbrand p{margin-top:18px;max-width:30ch;color:#C9D6CF;font-size:16px}
+.fbrand img{width:200px;height:auto}
+.fbrand p{margin-top:18px;max-width:30ch;color:var(--soft);font-size:16px}
 .fcol{display:flex;flex-direction:column;gap:10px;font-size:16px}
-.fcol h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;color:#E9DFA9;margin-bottom:6px}
-.fcol a{color:#E8EEE6;text-decoration:none;transition:color .2s,transform .2s;align-self:flex-start}
-.fcol a:hover{color:#fff;transform:translateX(4px)}
-.ftel{font-family:var(--serif);font-size:30px;white-space:nowrap}
+.fcol h3{font-family:var(--display);font-weight:400;font-size:22px;letter-spacing:.04em;color:var(--gold);margin-bottom:6px}
+.fcol a{color:var(--ink);text-decoration:none;transition:color .2s,transform .2s;align-self:flex-start}
+.fcol a:hover{color:var(--wine);transform:translateX(4px)}
+.ftel{font-family:var(--serif);font-size:30px;white-space:nowrap;color:var(--wine)!important}
 .fsoc{display:flex;flex-wrap:wrap;gap:8px}
-.fsoc a{padding:8px 14px;outline:1px solid rgba(233,223,169,.5);outline-offset:-1px;font-size:14px;font-weight:600}
-.fsoc a:hover{background:rgba(233,223,169,.15);transform:none}
-.fmore{font-weight:600;color:#E9DFA9!important}
-.fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 40px;margin-top:56px;padding-top:22px;border-top:1px solid rgba(233,223,169,.2);font-size:14px;color:#AFC1B8;position:relative;z-index:1}
-.fbottom .note{font-weight:600;color:#E8EEE6;font-size:15px;flex-basis:auto}
+.fsoc a{padding:8px 14px;outline:1px solid var(--gold);outline-offset:-1px;font-size:14px;font-weight:600}
+.fsoc a:hover{background:var(--sand);transform:none}
+.fmore{font-weight:600;color:var(--sea)!important}
+.fbottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 40px;margin-top:56px;padding-top:22px;border-top:1px solid #DCD9C3;font-size:14px;color:var(--soft);position:relative;z-index:1}
+.fbottom .note{font-weight:600;color:var(--ink);font-size:15px;flex-basis:auto}
 .fbottom a{color:inherit}
 .fword{font-family:var(--display);font-size:clamp(70px,16vw,260px);line-height:.8;letter-spacing:.06em;text-align:center;margin-top:30px;white-space:nowrap;
-  color:transparent;background:linear-gradient(100deg,rgba(233,223,169,.14) 0%,rgba(233,223,169,.14) 40%,rgba(255,250,215,.55) 50%,rgba(233,223,169,.14) 60%,rgba(233,223,169,.14) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 7s ease-in-out infinite;user-select:none;transform:translateY(12%)}
+  color:transparent;background:linear-gradient(100deg,rgba(131,114,47,.16) 0%,rgba(131,114,47,.16) 40%,rgba(131,114,47,.5) 50%,rgba(131,114,47,.16) 60%,rgba(131,114,47,.16) 100%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;animation:shine 7s ease-in-out infinite;user-select:none;transform:translateY(12%)}
 @keyframes shine{0%{background-position:120% 0}100%{background-position:-20% 0}}
 @media (max-width:960px){.fgrid{grid-template-columns:1fr 1fr}}
 @media (max-width:900px){.rcorners{position:static;display:flex;flex-direction:column;gap:30px;padding:0 20px 20px}.rc-left,.rc-right{position:static;width:auto;text-align:left;align-items:flex-start}.rc-right .rwho{justify-content:flex-start}.quote .in{padding-top:90px}.srcs-wrap{padding-bottom:80px}}
@@ -626,7 +628,7 @@ addEventListener('load',function(){scrollTo(0,0);});
 </main>
 
 <footer class="panel foot fx" id="contacts">
-  <video class="fbg" data-lazy autoplay muted loop playsinline preload="none" poster="media/pool-poster.jpg" aria-hidden="true"><source data-src="media/pool-1280.mp4" type="video/mp4"></video>
+  <svg class="fwave2" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0,70 L0,30 C180,4 360,0 540,22 C720,44 900,58 1080,40 C1260,22 1350,18 1440,26 L1440,70 Z"/></svg>
   <div class="wrap fgrid">
     <div class="fbrand">
       <img src="img/logo.png" width="200" height="86" alt="Варварка — спа и медицина" loading="lazy">
