@@ -108,7 +108,7 @@ section{position:relative}
 .what-media{position:absolute;top:4%;bottom:4%;right:0;width:min(62vw,980px);pointer-events:none;overflow:hidden;
   -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);
   -webkit-mask-composite:source-in;mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
-.what-media video{width:100%;height:100%;object-fit:cover;object-position:0% 50%;transform:scaleX(-1);filter:saturate(.8) sepia(.1) brightness(1.04)}
+.what-media video{width:100%;height:100%;object-fit:cover;object-position:60% 40%;filter:saturate(.8) sepia(.1) brightness(1.04)}
 .what-media::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.5) 80%,var(--cream) 100%)}
 .what .txt{display:flex;flex-direction:column;gap:22px}
 .statement{font-family:var(--serif);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
@@ -286,7 +286,7 @@ main,footer.foot{position:relative;z-index:1}
   .what-media{position:relative;width:100%;height:56vh;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
   .what-media::after{background:none}
-  .what-media video{object-position:28% 50%}
+  .what-media video{object-position:58% 40%}
   .who-col{grid-column:1/-1}
   .who-media{position:relative;width:100%;height:70vh;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
@@ -368,7 +368,7 @@ addEventListener('load',function(){scrollTo(0,0);});
       </div>
     </div>
     <div class="what-media" role="img" aria-label="Сеанс ватсу: мастер держит голову гостьи на воде">
-      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-poster.jpg" aria-hidden="true"><source data-src="media/session-1152.mp4" type="video/mp4"></video>
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-face.jpg" aria-hidden="true"><source data-src="media/session-face.mp4" type="video/mp4"></video>
     </div>
   </section>
 
