@@ -101,7 +101,15 @@ section{position:relative}
 .sec{padding-block:clamp(88px,10vw,150px)}
 
 /* что такое ватсу */
-.what{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(40px,6vw,96px);align-items:center}
+.what{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;position:relative;z-index:1;min-height:clamp(520px,44vw,680px)}
+.what .txt{grid-column:1}
+/* видео сеанса: справа, приближено, растворяется в молочный фон к тексту (зеркально блоку «Кому подходит») */
+.what-sec{overflow:hidden}
+.what-media{position:absolute;top:4%;bottom:4%;right:0;width:min(62vw,980px);pointer-events:none;overflow:hidden;
+  -webkit-mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);
+  -webkit-mask-composite:source-in;mask-image:linear-gradient(270deg,#000 0%,#000 50%,rgba(0,0,0,.62) 74%,transparent 96%),linear-gradient(180deg,transparent 0%,#000 14%,#000 84%,transparent 100%);mask-composite:intersect}
+.what-media video{width:100%;height:100%;object-fit:cover;object-position:0% 50%;transform:scaleX(-1);filter:saturate(.8) sepia(.1) brightness(1.04)}
+.what-media::after{content:"";position:absolute;inset:0;background:linear-gradient(270deg,rgba(253,255,240,0) 40%,rgba(253,255,240,.5) 80%,var(--cream) 100%)}
 .what .txt{display:flex;flex-direction:column;gap:22px}
 .statement{font-family:var(--serif);font-size:clamp(28px,2.7vw,38px);line-height:1.22;color:var(--ink);max-width:24ch}
 .what p.body{max-width:52ch;color:var(--soft)}
@@ -109,8 +117,6 @@ section{position:relative}
 .arch video,.arch img{width:100%;height:100%;object-fit:cover}
 .arch figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 22px;color:#fff;font-size:15px;background:linear-gradient(0deg,rgba(18,48,47,.55),rgba(18,48,47,0))}
 
-.arch video.session{aspect-ratio:3/2;filter:saturate(.82) sepia(.08) brightness(1.03)}
-.what .arch{aspect-ratio:3/2}
 /* после сеанса */
 .after{background:rgba(230,240,236,.72)}
 .after .wv{position:absolute;left:0;width:100%;height:clamp(36px,5vw,72px);pointer-events:none}
@@ -161,7 +167,8 @@ section{position:relative}
 /* мастера */
 .masters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px);margin-top:56px}
 .master{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
-.master .ph{aspect-ratio:4/3;outline:1px solid var(--gold);outline-offset:8px;background:var(--mist);display:flex;align-items:flex-end;justify-content:center;padding:18px;color:var(--sea);font-size:14px;text-align:center}
+.master .ph{aspect-ratio:3/4;outline:1px solid var(--gold);outline-offset:8px;background:var(--mist);overflow:hidden;margin:8px}
+.master .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:saturate(.85) sepia(.06)}
 .master h3{font-family:var(--serif);font-weight:500;font-size:32px;line-height:1.1;color:var(--wine)}
 .master .role{color:var(--wine);font-weight:600;font-size:15px;margin-top:6px}
 .master p{color:var(--soft);font-size:16px;margin-top:12px}
@@ -275,6 +282,11 @@ main,footer.foot{position:relative;z-index:1}
   .bar nav{display:none}
   .what,.who,.faq,.book .in,.prices .grid{grid-template-columns:minmax(0,1fr)}
   .who .txt{position:static}
+  .what{min-height:0}
+  .what-media{position:relative;width:100%;height:56vh;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
+  .what-media::after{background:none}
+  .what-media video{object-position:28% 50%}
   .who-col{grid-column:1/-1}
   .who-media{position:relative;width:100%;height:70vh;
     -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 62%,transparent 100%)}
@@ -284,9 +296,6 @@ main,footer.foot{position:relative;z-index:1}
   .arch{width:100%}
 }
 @media (max-width:640px){
-  .what .arch{aspect-ratio:auto;overflow:visible;background:none}
-  .what .arch video{height:auto}
-  .what .arch figcaption{position:static;background:none;color:var(--soft);padding:14px 0 0}
   body{font-size:16px}
   .bar .where{display:none}
   .hero{min-height:max(600px,100svh)}
@@ -343,7 +352,7 @@ main,footer.foot{position:relative;z-index:1}
 </header>
 
 <main>
-  <section class="panel sec" id="what">
+  <section class="panel sec what-sec" id="what">
     <div class="wrap what">
       <div class="txt rv">
         <h2 class="kicker-h">Что такое ватсу</h2>
@@ -351,10 +360,9 @@ main,footer.foot{position:relative;z-index:1}
         <p class="body">Ватсу — это шиацу, перенесённый в воду: water и shiatsu. Мастер поддерживает голову и тело, плавно вытягивает, покачивает и разминает. В воде тело почти ничего не весит, поэтому спина и суставы отдыхают так, как не получается на массажном столе.</p>
         <p><a class="btn" href="#book" data-book>Записаться онлайн</a></p>
       </div>
-      <figure class="arch rv" style="--d:.12s">
-        <video class="session" data-lazy autoplay muted loop playsinline preload="none" poster="media/session-poster.jpg" aria-label="Сеанс ватсу: мастер держит голову гостьи на воде"><source data-src="media/session-1152.mp4" type="video/mp4"></video>
-        <figcaption>Так проходит сеанс: мастер держит голову и ведёт вас по воде 34 °C.</figcaption>
-      </figure>
+    </div>
+    <div class="what-media" role="img" aria-label="Сеанс ватсу: мастер держит голову гостьи на воде">
+      <video data-lazy autoplay muted loop playsinline preload="none" poster="media/session-poster.jpg" aria-hidden="true"><source data-src="media/session-1152.mp4" type="video/mp4"></video>
     </div>
   </section>
 
@@ -427,11 +435,11 @@ main,footer.foot{position:relative;z-index:1}
       <h2 class="kicker-h rv">Вас держат надёжные руки</h2>
       <div class="masters">
         <article class="master rv">
-          <div class="ph">Фото мастера</div>
+          <figure class="ph"><img src="img/gordeeva.jpg" style="object-position:50% 62%;transform:scale(1.18);transform-origin:50% 55%" width="720" height="1280" alt="Галина Гордеева, мастер ватсу" loading="lazy"></figure>
           <div><h3>Галина Гордеева</h3><p class="role">Стаж больше 10 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
         <article class="master rv" style="--d:.1s">
-          <div class="ph">Фото мастера</div>
+          <figure class="ph"><img src="img/kalinkina.jpg" style="object-position:50% 45%" width="999" height="1280" alt="Елена Калинкина, мастер ватсу" loading="lazy"></figure>
           <div><h3>Елена Калинкина</h3><p class="role">Стаж 4–5 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
       </div>
