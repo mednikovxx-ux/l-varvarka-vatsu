@@ -328,17 +328,20 @@ main,footer.foot{position:relative;z-index:1}
 @media (prefers-reduced-motion:reduce){.fword{animation:none}}
 
 
-/* веточки, как в венке логотипа Варварки */
-.sprig{position:absolute;width:clamp(84px,8vw,124px);height:clamp(84px,8vw,124px);pointer-events:none;z-index:2;overflow:visible}
-.sprig.tl{left:-30px;top:-30px}
-.sprig.br{right:-30px;bottom:-30px;transform:rotate(180deg)}
-.sprig.tr{right:-30px;top:-30px;transform:scaleX(-1)}
-.phw{position:relative;margin:8px}
-.phw .ph{margin:0}
+/* купеческая вязь: золотые уголки-вензели с листьями и ягодами из венка логотипа, разделитель под заголовками */
+.orn{position:absolute;width:clamp(70px,6.4vw,92px);height:clamp(70px,6.4vw,92px);pointer-events:none;z-index:2;overflow:visible}
+.orn.tl{left:-24px;top:-24px}
+.orn.tr{right:-24px;top:-24px;transform:scaleX(-1)}
+.orn.bl{left:-24px;bottom:-24px;transform:scaleY(-1)}
+.orn.br{right:-24px;bottom:-24px;transform:scale(-1,-1)}
+.phw{position:relative;margin:14px}
+.phw .ph{margin:0;outline:none}
 .bring{position:relative;box-shadow:0 22px 44px -24px rgba(60,50,30,.35)}
 .first{overflow:visible!important}
 .card{position:relative;box-shadow:0 26px 50px -28px rgba(10,30,30,.5)}
-@media (max-width:640px){.sprig{width:76px;height:76px}.sprig.tl{left:-16px;top:-18px}.sprig.br{right:-16px;bottom:-18px}.sprig.tr{right:-12px;top:-18px}}
+.kicker-h::after{content:"";display:block;width:200px;height:20px;margin-top:14px;background:url(img/ornament-divider.svg) no-repeat left center/contain}
+.after h2.kicker-h::after,.quote .kicker-h::after{margin-left:auto;margin-right:auto;background-position:center}
+@media (max-width:640px){.orn{width:62px;height:62px}.orn.tl{left:-14px;top:-14px}.orn.tr{right:-14px;top:-14px}.orn.bl{left:-14px;bottom:-14px}.orn.br{right:-14px;bottom:-14px}}
 
 /* ---------- горизонтальная прокрутка (компьютер) ---------- */
 .h-on .hwrap{position:relative}
@@ -416,7 +419,7 @@ addEventListener('load',function(){scrollTo(0,0);});
 </script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sprig" viewBox="0 0 120 120"><path d="M13 112 C11 70 18 34 52 19 C70 12 90 11.5 112 12" fill="none" stroke="#6E7A44" stroke-width="1.3" stroke-linecap="round"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(12 96) rotate(-112) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(12.5 82) rotate(-38) scale(0.95)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(15 67) rotate(-128) scale(1.05)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#6E7A44" transform="translate(20 52) rotate(-32) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(29 39) rotate(-145) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(41 28) rotate(-55) scale(1.05)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(55 20) rotate(-160) scale(0.95)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#6E7A44" transform="translate(71 15) rotate(-70) scale(1)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#8E9A6B" transform="translate(88 12.5) rotate(-175) scale(0.9)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(104 12) rotate(-12) scale(0.85)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(13 104) rotate(-60) scale(0.75)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(16 60) rotate(-85) scale(0.7)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(35 33) rotate(-100) scale(0.75)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#5E6B35" transform="translate(63 17) rotate(-120) scale(0.7)"/><path d="M0 0 C5 -5.5 12 -5.5 17 0 C12 5.5 5 5.5 0 0Z" fill="#A3AD82" transform="translate(96 12) rotate(-100) scale(0.65)"/><circle cx="23" cy="74" r="3.2" fill="#7B4945"/><circle cx="17" cy="106" r="2.6" fill="#7B4945"/><circle cx="47" cy="21" r="2.8" fill="#7B4945"/><circle cx="80" cy="22" r="2.3" fill="#A08F45"/><circle cx="9" cy="58" r="2" fill="#A08F45"/><circle cx="60" cy="27" r="1.8" fill="#7B4945"/></symbol></svg>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="orn-corner" viewBox="0 0 96 96"><path d="M5 78 V16 Q5 5 16 5 H78" fill="none" stroke="#9C8640" stroke-width="1.4"/><path d="M12 66 V22 Q12 12 22 12 H66" fill="none" stroke="#9C8640" stroke-width=".7"/><path d="M78 5 C88 5 92 12 86 16 C81 19 77 13 82 11" fill="none" stroke="#9C8640" stroke-width="1.2" stroke-linecap="round"/><path d="M5 78 C5 88 12 92 16 86 C19 81 13 77 11 82" fill="none" stroke="#9C8640" stroke-width="1.2" stroke-linecap="round"/><path d="M22 22 C40 20 50 34 42 44 C36 51 26 46 30 38 C33 33 39 35 38 40" fill="none" stroke="#9C8640" stroke-width="1.3" stroke-linecap="round"/><path d="M22 22 C20 40 34 50 44 42" fill="none" stroke="#9C8640" stroke-width=".8" stroke-linecap="round"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#6E7A44" transform="translate(46 24) rotate(-25) scale(1)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(52 32) rotate(10) scale(0.9)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#6E7A44" transform="translate(24 46) rotate(115) scale(1)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(32 52) rotate(80) scale(0.9)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(58 20) rotate(-50) scale(0.75)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(20 58) rotate(140) scale(0.75)"/><circle cx="26" cy="26" r="3.4" fill="#7B4945"/><circle cx="60" cy="30" r="2.2" fill="#7B4945"/><circle cx="30" cy="60" r="2.2" fill="#7B4945"/><circle cx="26" cy="26" r="6.5" fill="none" stroke="#9C8640" stroke-width=".7"/></symbol><symbol id="orn-div" viewBox="0 0 240 24"><path d="M4 12 H86" stroke="#9C8640" stroke-width=".8"/><path d="M154 12 H236" stroke="#9C8640" stroke-width=".8"/><path d="M108 12 C98 12 94 3 86 5 C80 7 82 14 88 13" fill="none" stroke="#9C8640" stroke-width="1.1" stroke-linecap="round"/><path d="M132 12 C142 12 146 3 154 5 C160 7 158 14 152 13" fill="none" stroke="#9C8640" stroke-width="1.1" stroke-linecap="round"/><path d="M108 12 C98 12 94 21 86 19" fill="none" stroke="#9C8640" stroke-width=".7" stroke-linecap="round"/><path d="M132 12 C142 12 146 21 154 19" fill="none" stroke="#9C8640" stroke-width=".7" stroke-linecap="round"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#6E7A44" transform="translate(98 8) rotate(-160) scale(0.8)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#6E7A44" transform="translate(142 8) rotate(-20) scale(0.8)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(98 16) rotate(160) scale(0.7)"/><path d="M0 0 C4.5 -4.6 10.5 -4.6 15 0 C10.5 4.6 4.5 4.6 0 0Z" fill="#93A070" transform="translate(142 16) rotate(20) scale(0.7)"/><path d="M120 4 L127 12 L120 20 L113 12 Z" fill="none" stroke="#9C8640" stroke-width="1"/><circle cx="120" cy="12" r="3" fill="#7B4945"/></symbol></svg>
 <div class="hwrap" id="hwrap"><div class="track" id="track">
 <header class="hero panel" id="top">
   <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster="media/hero-poster.jpg" aria-hidden="true">
@@ -555,7 +558,7 @@ addEventListener('load',function(){scrollTo(0,0);});
           <li><span class="pt" aria-hidden="true"></span><span class="t">без спешки</span><h3>Чай и отдых</h3><p>Зона отдыха, халат и чай уже входят в визит.</p></li>
         </ol>
       </div>
-      <p class="bring rv"><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
+      <p class="bring rv"><svg class="orn tl" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn br" aria-hidden="true"><use href="#orn-corner"/></svg><b>С собой — только купальник.</b><span>Халат, полотенце, душ и чай есть в салоне.</span></p>
     </div>
   </section>
 
@@ -564,11 +567,11 @@ addEventListener('load',function(){scrollTo(0,0);});
       <h2 class="kicker-h rv">Вас держат надёжные руки</h2>
       <div class="masters">
         <article class="master rv">
-          <div class="phw"><figure class="ph"><img src="img/gordeeva.jpg" style="object-position:50% 62%;transform:scale(1.18);transform-origin:50% 55%" width="720" height="1280" alt="Галина Гордеева, мастер ватсу" loading="lazy"></figure><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg></div>
+          <div class="phw"><figure class="ph"><img src="img/gordeeva.jpg" style="object-position:50% 62%;transform:scale(1.18);transform-origin:50% 55%" width="720" height="1280" alt="Галина Гордеева, мастер ватсу" loading="lazy"></figure><svg class="orn tl" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn tr" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn bl" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn br" aria-hidden="true"><use href="#orn-corner"/></svg></div>
           <div><h3>Галина Гордеева</h3><p class="role">Стаж больше 10 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
         <article class="master rv" style="--d:.1s">
-          <div class="phw"><figure class="ph"><img src="img/kalinkina.jpg" style="object-position:50% 45%" width="999" height="1280" alt="Елена Калинкина, мастер ватсу" loading="lazy"></figure><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg><svg class="sprig br" aria-hidden="true"><use href="#sprig"/></svg></div>
+          <div class="phw"><figure class="ph"><img src="img/kalinkina.jpg" style="object-position:50% 45%" width="999" height="1280" alt="Елена Калинкина, мастер ватсу" loading="lazy"></figure><svg class="orn tl" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn tr" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn bl" aria-hidden="true"><use href="#orn-corner"/></svg><svg class="orn br" aria-hidden="true"><use href="#orn-corner"/></svg></div>
           <div><h3>Елена Калинкина</h3><p class="role">Стаж 4–5 лет</p><p>Среднее медицинское образование. Ведёт сеансы ватсу для взрослых, будущих мам и детей.</p></div>
         </article>
       </div>
@@ -580,7 +583,7 @@ addEventListener('load',function(){scrollTo(0,0);});
     <div class="wrap">
       <h2 class="kicker-h rv">Стоимость</h2>
       <div class="grid">
-        <div class="first rv"><svg class="sprig tr" aria-hidden="true"><use href="#sprig"/></svg>
+        <div class="first rv"><svg class="orn tr" aria-hidden="true"><use href="#orn-corner"/></svg>
           <h3>Первый визит: знакомство с ватсу</h3>
           <p class="sum">3 600 ₽<s>4 500 ₽</s></p>
           <p>Час в воде с мастером, 15 минут бани, чай и отдых. Для взрослых и детей одна цена.</p>
@@ -626,11 +629,12 @@ addEventListener('load',function(){scrollTo(0,0);});
         <p>Нижний Новгород, ул. Барминская, 15<br>Ежедневно с 10:00 до 22:00</p>
         <a class="bigtel" href="tel:88314110444">8 (831) 411-04-44</a>
         <div class="msg">
-          <a class="btn ghost" href="https://wa.me/79047837810" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn ghost" href="#book" data-max title="Ссылку на MAX нужно получить у салона">MAX</a>
+          <a class="btn ghost" href="https://vk.com/varvarkaspa/" target="_blank" rel="noopener">ВКонтакте</a>
           <a class="btn ghost" href="https://t.me/varvarka_spa/" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
-      <form class="card rv" id="lead" novalidate style="--d:.1s"><svg class="sprig tl" aria-hidden="true"><use href="#sprig"/></svg>
+      <form class="card rv" id="lead" novalidate style="--d:.1s"><svg class="orn tl" aria-hidden="true"><use href="#orn-corner"/></svg>
         <h3>Перезвоним и подберём время</h3>
         <label for="f-name">Имя<input id="f-name" name="name" type="text" autocomplete="name"></label>
         <label for="f-phone">Телефон<input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+7" required aria-describedby="f-msg"></label>
@@ -659,7 +663,7 @@ addEventListener('load',function(){scrollTo(0,0);});
       <h3>Связь</h3>
       <a class="ftel" href="tel:88314110444">8 (831) 411-04-44</a>
       <div class="fsoc">
-        <a href="https://wa.me/79047837810" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#book" data-max title="Ссылку на MAX нужно получить у салона">MAX</a>
         <a href="https://t.me/varvarka_spa/" target="_blank" rel="noopener">Telegram</a>
         <a href="https://vk.com/varvarkaspa/" target="_blank" rel="noopener">ВКонтакте</a>
       </div>
